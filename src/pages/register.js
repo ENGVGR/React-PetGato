@@ -6,13 +6,14 @@ import cadastro from '../assets/Cadastro.jpg'
 function Register() {
 
     const Image = styled.img`
-        width:55%;
+        width:50%;
+        object-fit: cover;
     `;
 
     return (
         <div className="Register">
             <Image src={cadastro}/>
-            <div style={{"border": "2px solid green"}}>Teste</div>
+            <div className="Register-Formulario">Teste</div>
         </div>
     )
 }

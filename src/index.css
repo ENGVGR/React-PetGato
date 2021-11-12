@@ -12,3 +12,9 @@ body {
   min-height:100vh;
   display: flex;
 }
+
+.Register-Formulario {
+  width: 50%;
+  text-align: center;
+  background-color: #FBE9F6;
+}
