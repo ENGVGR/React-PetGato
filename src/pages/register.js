@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import cadastro from '../assets/Cadastro.jpg'
+import Input from '../components/input';
 import Logo from '../components/logo';
 
 
@@ -16,6 +17,11 @@ function Register() {
             <Image src={cadastro}/>
             <div className="Register-Formulario">
                 <Logo/>
+                <p>Nome</p>
+                <Input/>
+                <Input/>
+                <Input/>
+                <Input/>
             </div>
         </div>
     )

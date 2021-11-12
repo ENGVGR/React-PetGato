@@ -4,7 +4,7 @@ import logo from '../assets/gatinho_petgato.svg'
 function Logo() {
 
     const Image = styled.img `
-        width: 170px
+        width: 30vh
     `;
 
     return (
