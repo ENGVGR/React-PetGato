@@ -31,9 +31,15 @@ body {
   margin-top: 1.5em;
   font-weight: bold;
   width: auto;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-.Register-Botton {
+.Register-Link:hover {
+  color: #C882B4;
+}
+
+.Register-Bottom {
   display: flex;
   margin: auto;
   width: 100%;

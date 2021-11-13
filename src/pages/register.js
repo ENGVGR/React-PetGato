@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 import cadastro from '../assets/Cadastro.jpg'
 import Button from '../components/button';
@@ -45,9 +46,9 @@ function Register() {
                 <Input Type="Password"/><br/>
                 <Button BackGround="Purple" Label="CADASTRAR"/>
 
-                <div className="Register-Botton">
+                <div className="Register-Bottom">
                     <Ask>Já possui conta? </Ask> 
-                    <a className="Register-Link" href>Faça login</a>
+                    <Link className="Register-Link" to="/">Faça login</Link>
                 </div>
             </div>
         </div>
