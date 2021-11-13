@@ -20,22 +20,51 @@ function Register() {
         text-align: left;
         color: #C882B4;
     `
-    
-    
+
+    const Button = styled.button`
+        cursor: pointer;
+        font-size: 1.4em;
+        width: 8em;
+        height: 2em;
+        margin-top: 1.1em;
+        background-color: #C882B4;
+        color white;
+        border: none;
+        border-radius: 5px;
+        &:hover {
+            background-color: #BA66A3;
+            color: white;
+        }
+    `;
+
+    const Ask = styled.h3`
+        font-size: 1.3em;
+        opacity: 0.4;
+        width: auto;
+        margin-top: 1.5em;
+        margin-right: 6px;
+    `;
+
 
     return (
         <div className="Register">
             <Image src={cadastro}/>
-            <div className="Register-Formulario">
+            <div className="Register-form">
                 <Logo/>
                 <Subtitle>Nome</Subtitle>
-                <Input/>
+                <Input Type="String"/>
                 <Subtitle>Email</Subtitle>
-                <Input/>
+                <Input Type="String"/>
                 <Subtitle>Senha</Subtitle>
-                <Input/>
+                <Input Type="Password"/>
                 <Subtitle>Confirme sua senha</Subtitle>
-                <Input/>
+                <Input Type="Password"/><br/>
+                <Button>CADASTRAR</Button>
+
+                <div className="Register-Botton">
+                    <Ask>Já possui conta? </Ask> 
+                    <a className="Register-Link" href>Faça login</a>
+                </div>
             </div>
         </div>
     )
