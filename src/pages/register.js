@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import cadastro from '../assets/Cadastro.jpg'
+import Button from '../components/button';
 import Input from '../components/input';
 import Logo from '../components/logo';
 
@@ -21,22 +22,6 @@ function Register() {
         color: #C882B4;
     `
 
-    const Button = styled.button`
-        cursor: pointer;
-        font-size: 1.4em;
-        width: 8em;
-        height: 2em;
-        margin-top: 1.1em;
-        background-color: #C882B4;
-        color white;
-        border: none;
-        border-radius: 5px;
-        &:hover {
-            background-color: #BA66A3;
-            color: white;
-        }
-    `;
-
     const Ask = styled.h3`
         font-size: 1.3em;
         opacity: 0.4;
@@ -44,7 +29,6 @@ function Register() {
         margin-top: 1.5em;
         margin-right: 6px;
     `;
-
 
     return (
         <div className="Register">
@@ -59,7 +43,7 @@ function Register() {
                 <Input Type="Password"/>
                 <Subtitle>Confirme sua senha</Subtitle>
                 <Input Type="Password"/><br/>
-                <Button>CADASTRAR</Button>
+                <Button BackGround="Purple" Label="CADASTRAR"/>
 
                 <div className="Register-Botton">
                     <Ask>Já possui conta? </Ask> 
