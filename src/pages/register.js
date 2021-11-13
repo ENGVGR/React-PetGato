@@ -35,17 +35,18 @@ function Register() {
         <div className="Register">
             <Image src={cadastro}/>
             <div className="Register-form">
-                <Logo/>
-                <Subtitle>Nome</Subtitle>
-                <Input Type="String"/>
-                <Subtitle>Email</Subtitle>
-                <Input Type="String"/>
-                <Subtitle>Senha</Subtitle>
-                <Input Type="Password"/>
-                <Subtitle>Confirme sua senha</Subtitle>
-                <Input Type="Password"/><br/>
-                <Button BackGround="Purple" Label="CADASTRAR"/>
-
+                <form>
+                    <Logo/>
+                    <Subtitle>Nome</Subtitle>
+                    <Input Type="String"/>
+                    <Subtitle>Email</Subtitle>
+                    <Input Type="String"/>
+                    <Subtitle>Senha</Subtitle>
+                    <Input Type="Password"/>
+                    <Subtitle>Confirme sua senha</Subtitle>
+                    <Input Type="Password"/><br/>
+                    <Button BackGround="Purple" Label="CADASTRAR"/>
+                </form>
                 <div className="Register-Bottom">
                     <Ask>Já possui conta? </Ask> 
                     <Link className="Register-Link" to="/">Faça login</Link>
