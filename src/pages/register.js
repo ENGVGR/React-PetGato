@@ -64,7 +64,7 @@ function Register() {
                     <Input id="email" type="String" label="Email"/>
                     <Input id="password" type="Password" label="Senha"/>
                     <Input id="confirm_password" type="Password" label="Confirme sua senha"/><br/>
-                    <Button BackGround="Purple" Label="CADASTRAR"/>
+                    <Button backGround="Purple" label="CADASTRAR"/>
                 </form>
                 <DivBottom>
                     <Ask>Já possui conta?</Ask> 
