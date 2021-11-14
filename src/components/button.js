@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 
-function Button(prop) {
+function Button(props) {
     
-    function ButtonBackGroundPurple(Label) {
+    function ButtonBackGroundPurple({Label}) {
     
         const Button = styled.button`
             cursor: pointer;
@@ -22,13 +22,13 @@ function Button(prop) {
         `;
 
         return (
-            <Button>{Label.Label}</Button>
+            <Button>{Label}</Button>
         )
     }
 
-    if (prop.BackGround === "Purple") {
+    if (props.BackGround === "Purple") {
         return (
-            <ButtonBackGroundPurple Label={prop.Label}/>
+            <ButtonBackGroundPurple Label={props.Label}/>
         )
     }
 }
