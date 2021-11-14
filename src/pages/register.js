@@ -6,12 +6,31 @@ import Input from '../components/input';
 import Logo from '../components/logo';
 
 
-
 function Register() {
+
+    const Div = styled.div`
+        width: auto;
+        min-height:100vh;
+        display: flex;
+    `;
 
     const Image = styled.img`
         width:50%;
         object-fit: cover;
+    `;
+
+    const DivForm = styled.div`
+        width: 50%;
+        text-align: center;
+        background-color: #FBE9F6;
+        padding-top: 3em;
+    `;
+
+    const DivBottom = styled.div`
+        display: flex;
+        margin: auto;
+        width: 100%;
+        justify-content: center;
     `;
 
     const Ask = styled.span`
@@ -22,10 +41,23 @@ function Register() {
         margin-right: 6px;
     `;
 
+    const StyledLink = styled(Link)`
+        color: #BA66A3;
+        font-size: 1.3em;
+        margin-top: 1.5em;
+        font-weight: bold;
+        width: auto;
+        text-decoration: none;
+        cursor: pointer;
+        &:hover {
+            color: #C882B4;
+        }
+    `;
+
     return (
-        <div className="Register">
+        <Div>
             <Image src={cadastro}/>
-            <div className="Register-form">
+            <DivForm>
                 <form>
                     <Logo/>
                     <Input id="name" type="String" label="Nome"/>
@@ -34,12 +66,12 @@ function Register() {
                     <Input id="confirm_password" type="Password" label="Confirme sua senha"/><br/>
                     <Button BackGround="Purple" Label="CADASTRAR"/>
                 </form>
-                <div className="Register-Bottom">
-                    <Ask>Já possui conta? </Ask> 
-                    <Link className="Register-Link" to="/">Faça login</Link>
-                </div>
-            </div>
-        </div>
+                <DivBottom>
+                    <Ask>Já possui conta?</Ask> 
+                    <StyledLink to="/">Faça login</StyledLink>
+                </DivBottom>
+            </DivForm>
+        </Div>
     )
 }
 
