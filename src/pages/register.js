@@ -38,13 +38,13 @@ function Register() {
                 <form>
                     <Logo/>
                     <Subtitle>Nome</Subtitle>
-                    <Input Type="String"/>
+                    <Input type="String"/>
                     <Subtitle>Email</Subtitle>
-                    <Input Type="String"/>
+                    <Input type="String"/>
                     <Subtitle>Senha</Subtitle>
-                    <Input Type="Password"/>
+                    <Input type="Password"/>
                     <Subtitle>Confirme sua senha</Subtitle>
-                    <Input Type="Password"/><br/>
+                    <Input type="Password"/><br/>
                     <Button BackGround="Purple" Label="CADASTRAR"/>
                 </form>
                 <div className="Register-Bottom">

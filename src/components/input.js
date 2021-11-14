@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-function Input(Type) {
+function Input({type}) {
 
     function InputString() {
 
@@ -31,12 +31,12 @@ function Input(Type) {
         )
     }
 
-    if (Type.Type === "String") {
+    if (type === "String") {
         return (
             <InputString/>
         )
     }
-    else if (Type.Type === "Password") {
+    else if (type === "Password") {
         return (
             <InputPassword/>
         )
