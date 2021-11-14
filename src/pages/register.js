@@ -14,7 +14,7 @@ function Register() {
         object-fit: cover;
     `;
 
-    const Ask = styled.h3`
+    const Ask = styled.span`
         font-size: 1.3em;
         opacity: 0.4;
         width: auto;
