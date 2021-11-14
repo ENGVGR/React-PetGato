@@ -14,15 +14,6 @@ function Register() {
         object-fit: cover;
     `;
 
-    const Subtitle = styled.h3`
-        margin: auto;
-        margin-bottom: 0.1em;
-        margin-top: 1em;
-        width: 50%;
-        text-align: left;
-        color: #C882B4;
-    `
-
     const Ask = styled.h3`
         font-size: 1.3em;
         opacity: 0.4;
@@ -37,14 +28,10 @@ function Register() {
             <div className="Register-form">
                 <form>
                     <Logo/>
-                    <Subtitle>Nome</Subtitle>
-                    <Input type="String"/>
-                    <Subtitle>Email</Subtitle>
-                    <Input type="String"/>
-                    <Subtitle>Senha</Subtitle>
-                    <Input type="Password"/>
-                    <Subtitle>Confirme sua senha</Subtitle>
-                    <Input type="Password"/><br/>
+                    <Input id="name" type="String" label="Nome"/>
+                    <Input id="email" type="String" label="Email"/>
+                    <Input id="password" type="Password" label="Senha"/>
+                    <Input id="confirm_password" type="Password" label="Confirme sua senha"/><br/>
                     <Button BackGround="Purple" Label="CADASTRAR"/>
                 </form>
                 <div className="Register-Bottom">
