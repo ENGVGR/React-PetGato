@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 import cadastro from '../assets/Cadastro.jpg'
-import Button from '../components/button';
+import { ButtonPurple } from '../components/button';
 import { Input, Label } from '../components/input';
 import Logo from '../components/logo';
 
@@ -46,7 +46,7 @@ function Register() {
                     <Input id="password" type="password" value={Password} onChange={(event) => {setPassword(event.target.value)}} required minLength="8"/>
                     <Label for="password_confirm">Confirme sua senha</Label>
                     <Input id="password_confirm" type="password" value={PasswordConfirm} onChange={(event) => {setPasswordConfirm(event.target.value)}} required minLength="8"/><br/>
-                    <Button backGround="Purple" label="CADASTRAR"/>
+                    <ButtonPurple>CADASTRAR</ButtonPurple>
                 </form>
                 <DivBottom>
                     <Ask>Já possui conta?</Ask> 
