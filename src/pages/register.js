@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components'
+import api from '../api/api';
 import cadastro from '../assets/Cadastro.jpg'
 import { ButtonPurple } from '../components/button';
 import { Input, Label } from '../components/input';
@@ -26,7 +27,13 @@ function Register() {
                 password_confirmation: PasswordConfirm
             }
 
-            console.log(Data)
+            api.post('users/', Data)
+            .then((resp) => {
+                console.log(resp)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
         }
         post()
     }
