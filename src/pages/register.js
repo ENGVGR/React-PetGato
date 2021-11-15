@@ -4,7 +4,8 @@ import styled from 'styled-components'
 import cadastro from '../assets/Cadastro.jpg'
 import { ButtonPurple } from '../components/button';
 import { Input, Label } from '../components/input';
-import Logo from '../components/logo';
+import { Logo } from '../components/logo';
+
 
 
 function Register() {
@@ -38,13 +39,13 @@ function Register() {
             <DivForm>
                 <form onSubmit={handleSubmit}>
                     <Logo/>
-                    <Label for="name">Nome</Label>
+                    <Label htmlFor="name">Nome</Label>
                     <Input id="name" value={Name} onChange={(event) => {setName(event.target.value)}} required/>
-                    <Label for="email" >Email</Label>
+                    <Label htmlFor="email" >Email</Label>
                     <Input id="email" type="email" value={Email} onChange={(event) => {setEmail(event.target.value)}} required/>
-                    <Label for="password">Senha</Label>
+                    <Label htmlFor="password">Senha</Label>
                     <Input id="password" type="password" value={Password} onChange={(event) => {setPassword(event.target.value)}} required minLength="8"/>
-                    <Label for="password_confirm">Confirme sua senha</Label>
+                    <Label htmlFor="password_confirm">Confirme sua senha</Label>
                     <Input id="password_confirm" type="password" value={PasswordConfirm} onChange={(event) => {setPasswordConfirm(event.target.value)}} required minLength="8"/><br/>
                     <ButtonPurple>CADASTRAR</ButtonPurple>
                 </form>
