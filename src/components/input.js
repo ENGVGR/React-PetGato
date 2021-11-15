@@ -1,14 +1,6 @@
 import styled from "styled-components"
 
-const InputString = styled.input`
-    border: 1px solid #C882B4;
-    width: 50%;
-    height: 1.7em;
-    font-size: 1.3em;
-    text-align: center;
-`;
-
-const InputPassword = styled.input.attrs({type: 'password'})`
+const Input = styled.input`
     border: 1px solid #C882B4;
     width: 50%;
     height: 1.7em;
@@ -26,4 +18,4 @@ const Label = styled.label`
     margin-top: 0.6em
 `;
 
-export {InputString, InputPassword, Label}
+export {Input, Label}

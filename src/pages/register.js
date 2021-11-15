@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 import cadastro from '../assets/Cadastro.jpg'
 import Button from '../components/button';
-import { InputPassword, InputString, Label } from '../components/input';
+import { Input, Label } from '../components/input';
 import Logo from '../components/logo';
 
 
@@ -12,10 +12,22 @@ function Register() {
     const [Name, setName] = useState('')
     const [Email, setEmail] = useState()
     const [Password, setPassword] = useState()
-    const [Password_confirm, setPasswordConfirm] = useState()
+    const [PasswordConfirm, setPasswordConfirm] = useState()
 
-    if (Name !== '') {
-        console.log(Name)
+    function handleSubmit(event) {
+        event.preventDefault()
+
+        async function post() {
+            const Data = {
+                name: Name,
+                email: Email,
+                password: Password,
+                password_confirmation: PasswordConfirm
+            }
+
+            console.log(Data)
+        }
+        post()
     }
 
 
@@ -24,16 +36,16 @@ function Register() {
         <Div>
             <Image src={cadastro}/>
             <DivForm>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <Logo/>
                     <Label for="name">Nome</Label>
-                    <InputString id="name" value={Name} onChange={(event) => {setName(event.target.value)}}/>
-                    <Label for="email">Email</Label>
-                    <InputString id="email"/>
+                    <Input id="name" value={Name} onChange={(event) => {setName(event.target.value)}} required/>
+                    <Label for="email" >Email</Label>
+                    <Input id="email" type="email" value={Email} onChange={(event) => {setEmail(event.target.value)}} required/>
                     <Label for="password">Senha</Label>
-                    <InputPassword id="password"/>
+                    <Input id="password" type="password" value={Password} onChange={(event) => {setPassword(event.target.value)}} required minLength="8"/>
                     <Label for="password_confirm">Confirme sua senha</Label>
-                    <InputPassword id="password_confirm"/><br/>
+                    <Input id="password_confirm" type="password" value={PasswordConfirm} onChange={(event) => {setPasswordConfirm(event.target.value)}} required minLength="8"/><br/>
                     <Button backGround="Purple" label="CADASTRAR"/>
                 </form>
                 <DivBottom>
