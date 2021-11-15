@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 import cadastro from '../assets/Cadastro.jpg'
@@ -8,7 +9,43 @@ import Logo from '../components/logo';
 
 function Register() {
 
-    const Div = styled.div`
+    const [Name, setName] = useState('')
+    const [Email, setEmail] = useState()
+    const [Password, setPassword] = useState()
+    const [Password_confirm, setPasswordConfirm] = useState()
+
+    if (Name !== '') {
+        console.log(Name)
+    }
+
+
+    return (
+
+        <Div>
+            <Image src={cadastro}/>
+            <DivForm>
+                <form>
+                    <Logo/>
+                    <Label for="name">Nome</Label>
+                    <InputString id="name" value={Name} onChange={(event) => {setName(event.target.value)}}/>
+                    <Label for="email">Email</Label>
+                    <InputString id="email"/>
+                    <Label for="password">Senha</Label>
+                    <InputPassword id="password"/>
+                    <Label for="password_confirm">Confirme sua senha</Label>
+                    <InputPassword id="password_confirm"/><br/>
+                    <Button backGround="Purple" label="CADASTRAR"/>
+                </form>
+                <DivBottom>
+                    <Ask>Já possui conta?</Ask> 
+                    <StyledLink to="/">Faça login</StyledLink>
+                </DivBottom>
+            </DivForm>
+        </Div>
+    )
+}
+
+const Div = styled.div`
         width: auto;
         min-height:100vh;
         display: flex;
@@ -53,31 +90,5 @@ function Register() {
             color: #C882B4;
         }
     `;
-
-    return (
-
-        <Div>
-            <Image src={cadastro}/>
-            <DivForm>
-                <form>
-                    <Logo/>
-                    <Label for="name">Nome</Label>
-                    <InputString id="name"/>
-                    <Label for="email">Email</Label>
-                    <InputString id="email"/>
-                    <Label for="password">Senha</Label>
-                    <InputPassword id="password"/>
-                    <Label for="password_confirm">Confirme sua senha</Label>
-                    <InputPassword id="password_confirm"/><br/>
-                    <Button backGround="Purple" label="CADASTRAR"/>
-                </form>
-                <DivBottom>
-                    <Ask>Já possui conta?</Ask> 
-                    <StyledLink to="/">Faça login</StyledLink>
-                </DivBottom>
-            </DivForm>
-        </Div>
-    )
-}
 
 export default Register
