@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 import cadastro from '../assets/Cadastro.jpg'
 import Button from '../components/button';
-import Input from '../components/input';
+import { InputPassword, InputString, Label } from '../components/input';
 import Logo from '../components/logo';
 
 
@@ -55,15 +55,20 @@ function Register() {
     `;
 
     return (
+
         <Div>
             <Image src={cadastro}/>
             <DivForm>
                 <form>
                     <Logo/>
-                    <Input id="name" type="String" label="Nome"/>
-                    <Input id="email" type="String" label="Email"/>
-                    <Input id="password" type="Password" label="Senha"/>
-                    <Input id="confirm_password" type="Password" label="Confirme sua senha"/><br/>
+                    <Label for="name">Nome</Label>
+                    <InputString id="name"/>
+                    <Label for="email">Email</Label>
+                    <InputString id="email"/>
+                    <Label for="password">Senha</Label>
+                    <InputPassword id="password"/>
+                    <Label for="password_confirm">Confirme sua senha</Label>
+                    <InputPassword id="password_confirm"/><br/>
                     <Button backGround="Purple" label="CADASTRAR"/>
                 </form>
                 <DivBottom>
