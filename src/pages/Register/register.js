@@ -1,13 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components'
-import api from '../api/api';
+import api from '../../api/api';
 import cadastro from '../assets/Cadastro.jpg'
-import { ButtonPurple } from '../components/button';
-import { Input, Label } from '../components/input';
-import { Logo } from '../components/logo';
-
-
+import { ButtonPurple } from '../../components/button';
+import { Input, Label } from '../../components/input';
+import { Logo } from '../../components/logo';
 
 function Register() {
 
