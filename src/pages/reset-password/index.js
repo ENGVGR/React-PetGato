@@ -24,7 +24,7 @@ const Reset_Password_Page = () => {
                 </div>
                 <div className="reset-password-div-bottom-2">
                     <span className="reset-password-span-ask">Ainda não tem conta?</span> 
-                    <Link className="reset-password-link" to="/">Cadastre-se aqui</Link>
+                    <Link className="reset-password-link" to="/registro">Cadastre-se aqui</Link>
                 </div>
             </div>
         </div>
