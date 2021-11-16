@@ -1,4 +1,6 @@
-.button-purple {
+import styled from 'styled-components';
+
+const ButtonPurple = styled.button`
     cursor: pointer;
     font-size: 1.4em;
     width: auto;
@@ -12,4 +14,6 @@
         background-color: #BA66A3;
         color: white;
     }
-}
+`;
+
+export {ButtonPurple}

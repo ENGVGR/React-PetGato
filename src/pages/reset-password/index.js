@@ -1,9 +1,9 @@
 import '../reset-password/index.scss'
 import Foto_Esqueci_Minha_Senha from '../../assets/Esqueci minha senha.jpg'
-import { Logo } from '../../components/logo/index.js'
-import '../../components/button/index.scss'
-import '../../components/input/index.scss'
 import { Link } from 'react-router-dom'
+import { Logo } from '../../components/logo'
+import { Input, Label } from '../../components/input'
+import { ButtonPurple } from '../../components/button'
 
 const Reset_Password_Page = () => {
     return(
@@ -13,10 +13,10 @@ const Reset_Password_Page = () => {
             <div className="reset-password-div-form">
                 <Logo/>
                 <form>
-                    <label className="label-form" htmlFor="name">Email</label>
-                    <input className="input-form" type="email" required/>
+                    <Label htmlFor="name">Email</Label>
+                    <Input type="email" required/>
                     <span className="reset-password-span-message">Insira seu email para recuperar a senha</span>
-                    <button className="button-purple">RECUPERAR SENHA</button>
+                    <ButtonPurple>RECUPERAR SENHA</ButtonPurple>
                 </form>
                 <div className="reset-password-div-bottom">
                     <span className="reset-password-span-ask">Lembrou a senha?</span> 
