@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import api from '../../api/api';
 import cadastro from '../../assets/Cadastro.jpg'
 import { Input, Label } from '../../components/input';
-import '../Register/index.scss'
+import './index.scss'
 import { Logo } from '../../components/logo'
 import { ButtonPurple } from '../../components/button';
 
