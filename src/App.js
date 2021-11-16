@@ -1,7 +1,7 @@
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import { Routes } from "react-router";
 import './index.css'
-import Register from './pages/register'
+import Register from './pages/Register/register'
 import Reset_Password_Page from './pages/reset-password'
 
 function App() {

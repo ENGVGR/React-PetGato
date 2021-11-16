@@ -1,8 +1,7 @@
 import './Styles/reset-password.css'
 import Foto_Esqueci_Minha_Senha from '../assets/Esqueci minha senha.jpg'
-import Logo from '../components/logo'
-import { InputString, Label } from '../components/input'
-import Button from '../components/button'
+import { Logo } from '../components/logo'
+import { ButtonPurple } from '../components/button'
 
 const Reset_Password_Page = () => {
     return(
@@ -18,7 +17,7 @@ const Reset_Password_Page = () => {
                         <input id="email"></input>
                         <span>Insira seu email para recuperar a senha</span>
                     </div>
-                    <Button backGround="Purple" label="RECUPERAR SENHA"/>
+                    <ButtonPurple>RECUPERAR SENHA</ButtonPurple>
                     <div className="links-text">
                         <span>Lembrou a senha? <a href="/">Faça Login</a></span>
                         <span>Ainda não tem conta? <a href="/">Cadastre-se aqui</a></span>
