@@ -20,15 +20,16 @@ Os tipos podem ser:
 - feat - adiciona uma nova funcionalidade
 - fix - correção de bug/erro;
 - refactor: refatoração do código, sem alteração nas features
-- style: tudo relacionado a estilização
-- docs - adiciona ou modifica arquivos de documentaçao (README ...)
-- task: remove o link hardcoded da api
+- style: Modificações apenas no design
+
 
 ### Commits
-
-Representa uma ideia mais específica da tarefa. Na hora de fazer um commit, o ideal é seguir o padrão **tipo: resumo**. Para fazer o resumo complete a frase  (Se aplicado esse commit...) {resumo}. Ex: feat: implementa componentes de input.
+Importante dividir as modificações em vários commits. O padrão ideal para comentário de um commit é:
+**tipo: resumo**
+Por exemplo: 
+feat: implementa tal funcionalidade
+fix: conserta tal bug
 
 ### Mais informações sobre git
 
 https://brennop.github.io/wiki/#/git/guia
-
