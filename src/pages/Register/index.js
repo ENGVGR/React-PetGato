@@ -2,10 +2,11 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../../api/api';
 import cadastro from '../../assets/Cadastro.jpg'
-import { ButtonPurple } from '../../components/button';
-import { Input, Label } from '../../components/input';
-import { Logo } from '../../components/logo';
+import '../../components/button/index.scss';
+import '../../components/input/index.scss';
+import { Logo } from '../../components/logo/index.js';
 import '../Register/index.scss'
+
 
 function Register() {
 
@@ -52,15 +53,15 @@ function Register() {
             <div className="register-div-form">
                 <form onSubmit={handleSubmit}>
                     <Logo/>
-                    <Label htmlFor="name">Nome</Label>
-                    <Input id="name" value={Name} onChange={(event) => {setName(event.target.value)}} required/>
-                    <Label htmlFor="email" >Email{ErrorEmail?<span className="register-span-error"> *Já existe uma conta com esse email!</span>:<span></span>}</Label>
-                    <Input id="email" type="email" value={Email} onChange={(event) => {setEmail(event.target.value)}} required/>
-                    <Label htmlFor="password">Senha</Label>
-                    <Input id="password" type="password" value={Password} onChange={(event) => {setPassword(event.target.value)}} required minLength="8"/>
-                    <Label htmlFor="password_confirm">Confirme sua senha{ErrorPassword?<span className="register-span-error"> *Precisa ser a mesma senha!</span>:<span></span>}</Label>
-                    <Input id="password_confirm" type="password" value={PasswordConfirm} onChange={(event) => {setPasswordConfirm(event.target.value)}} required minLength="8"/><br/>
-                    <ButtonPurple>CADASTRAR</ButtonPurple>
+                    <label className="label-form" htmlFor="name">Nome</label>
+                    <input className="input-form" id="name" value={Name} onChange={(event) => {setName(event.target.value)}} required/>
+                    <label className="label-form" htmlFor="email" >Email{ErrorEmail?<span className="register-span-error"> *Já existe uma conta com esse email!</span>:<span></span>}</label>
+                    <input className="input-form" id="email" type="email" value={Email} onChange={(event) => {setEmail(event.target.value)}} required/>
+                    <label className="label-form" htmlFor="password">Senha</label>
+                    <input className="input-form" id="password" type="password" value={Password} onChange={(event) => {setPassword(event.target.value)}} required minLength="8"/>
+                    <label className="label-form" htmlFor="password_confirm">Confirme sua senha{ErrorPassword?<span className="register-span-error"> *Precisa ser a mesma senha!</span>:<span></span>}</label>
+                    <input className="input-form" id="password_confirm" type="password" value={PasswordConfirm} onChange={(event) => {setPasswordConfirm(event.target.value)}} required minLength="8"/><br/>
+                    <button className="button-purple">CADASTRAR</button>
                 </form>
                 <div className="register-div-bottom">
                     <span className="register-span-ask">Já possui conta?</span> 

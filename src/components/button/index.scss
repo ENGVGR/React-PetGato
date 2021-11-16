@@ -1,19 +1,15 @@
-import styled from "styled-components";
-
-const ButtonPurple = styled.button`
+.button-purple {
     cursor: pointer;
     font-size: 1.4em;
     width: 8em;
     height: 2em;
     margin-top: 1.1em;
     background-color: #C882B4;
-    color white;
+    color: white;
     border: none;
     border-radius: 5px;
     &:hover {
         background-color: #BA66A3;
         color: white;
     }
-`;
-
-export {ButtonPurple}
+}

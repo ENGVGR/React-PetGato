@@ -2,7 +2,7 @@ import {BrowserRouter as Router, Route} from "react-router-dom";
 import { Routes } from "react-router";
 import './index.css'
 import Register from './pages/Register/index'
-import Reset_Password_Page from './pages/reset-password'
+import Reset_Password_Page from './pages/reset-password/index'
 
 function App() {
   return (
