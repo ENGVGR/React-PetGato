@@ -28,30 +28,6 @@ const Reset_Password_Page = () => {
                 </div>
             </div>
         </div>
-
-
-
-        /*
-        <div className="page-container">
-            <div className="image-container">
-                <img className="image" src={Foto_Esqueci_Minha_Senha} alt="foto"/>
-            </div>
-            <div className="content-container">
-                <div className="content">
-                    <Logo/>
-                    <div className="form-container">
-                        <label for="email">Email</label>
-                        <input id="email"></email>
-                        <span>Insira seu email para recuperar a senha</span>
-                    </div>
-                    <button className="button-purple">RECUPERAR SENHA</button>
-                    <div className="links-text">
-                        <span>Lembrou a senha? <a href="/">Faça Login</a></span>
-                        <span>Ainda não tem conta? <a href="/">Cadastre-se aqui</a></span>
-                    </div>
-                </div>
-            </div>
-        </div>*/
     )
 }
 
