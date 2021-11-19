@@ -1,11 +1,12 @@
-import '../reset-password/index.scss'
+import './index.scss'
 import Foto_Esqueci_Minha_Senha from '../../assets/Esqueci minha senha.jpg'
 import { Link } from 'react-router-dom'
 import { Logo } from '../../components/logo'
 import { Input, Label } from '../../components/input'
 import { ButtonPurple } from '../../components/button'
 
-const Reset_Password_Page = () => {
+function ResetPassword() {
+
     return(
 
         <div className="reset-password-div">
@@ -31,4 +32,4 @@ const Reset_Password_Page = () => {
     )
 }
 
-export default Reset_Password_Page
+export default ResetPassword
