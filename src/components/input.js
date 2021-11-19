@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components';
 
 const Input = styled.input`
     border: 1px solid #C882B4;
@@ -19,3 +19,4 @@ const Label = styled.label`
 `;
 
 export {Input, Label}
+
