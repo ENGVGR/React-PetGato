@@ -1,0 +1,41 @@
+.navbar-div {
+    background-color: #BA66A3;
+    min-width: 100vh;
+    min-height: 15vh;
+    display: flex;
+}
+
+.navbar-img {
+    width: 20vh;
+    margin-top: 0vh;
+    margin-left: 8vh;
+}
+
+.navbar-div-link {
+    min-width: 115vh;
+    height: 14.8vh;
+    margin-left: auto;
+    justify-items: auto;
+    display: flex;
+}
+
+.navbar-link {
+    margin: auto;
+    margin-left: 0vh;
+    margin-right: 5vh;
+    font-size: 1.5em;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    
+}
+
+.navbar-link-2 {
+    margin: auto;
+    margin-left: 0vh;
+    margin-right: 5vh;
+    font-size: 1.5em;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-weight: bold;
+    
+}
