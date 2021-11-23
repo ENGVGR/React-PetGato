@@ -1,0 +1,23 @@
+.perfil-photo {
+    width: 35vh;
+    height: 35vh;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-left: 8em;
+    margin-top: 3em;
+}
+
+.perfil-photo-link {
+    display: block;
+    text-decoration: none;
+    margin-left: 4.5em;
+    margin-top: 0.5em;
+    font-size: 1.4em;
+    color: #BA66A3;
+    font-weight: bold;
+}
+
+.perfil-photo-icon {
+    width: 4vh;
+    margin-right: 0.3em;
+}
