@@ -55,11 +55,11 @@ function Register() {
                     <Logo/>
                     <Label htmlFor="name">Nome</Label>
                     <Input id="name" value={Name} onChange={(event) => {setName(event.target.value)}} required/>
-                    <Label htmlFor="email" >Email{ErrorEmail?<span className="register-span-error"> *Já existe uma conta com esse email!</span>:<span></span>}</Label>
+                    <Label htmlFor="email" >Email{ErrorEmail?<span className="register-span-error"> *Já existe uma conta com esse email!</span>:<></>}</Label>
                     <Input id="email" type="email" value={Email} onChange={(event) => {setEmail(event.target.value)}} required/>
                     <Label htmlFor="password">Senha</Label>
                     <Input id="password" type="password" value={Password} onChange={(event) => {setPassword(event.target.value)}} required minLength="8"/>
-                    <Label htmlFor="password_confirm">Confirme sua senha{ErrorPassword?<span className="register-span-error"> *Precisa ser a mesma senha!</span>:<span></span>}</Label>
+                    <Label htmlFor="password_confirm">Confirme sua senha{ErrorPassword?<span className="register-span-error"> *Precisa ser a mesma senha!</span>:<></>}</Label>
                     <Input id="password_confirm" type="password" value={PasswordConfirm} onChange={(event) => {setPasswordConfirm(event.target.value)}} required minLength="8"/><br/>
                     <ButtonPurple>CADASTRAR</ButtonPurple>
                 </form>

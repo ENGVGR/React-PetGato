@@ -43,7 +43,7 @@ function ForgotPassword() {
                     <Label htmlFor="name">Email</Label>
                     <Input type="email" required value={Email} onChange={(event)=>(setEmail(event.target.value))}/>
                     <Label>{Error?<span className="forgot-password-span-error"> *Email incorreto</span>:<span className="forgot-password-span-message">Insira seu email para recuperar a senha</span>}</Label>
-                    {Confirmation?<span className="forgot-password-span-error"> *Link para alteração de senha enviado para o email informado!</span>:<span></span>}
+                    {Confirmation?<span className="forgot-password-span-error"> *Link para alteração de senha enviado para o email informado!</span>:<></>}
                     <ButtonPurple>RECUPERAR SENHA</ButtonPurple>
                     
                 </form>
