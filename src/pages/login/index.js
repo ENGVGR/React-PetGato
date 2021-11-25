@@ -47,7 +47,7 @@ function Login () {
                     <Input id="email" type="email" required value={Email} onChange={(event) => {setEmail(event.target.value)}}/>
                     <Label htmlFor="password">Senha</Label>
                     <Input id="password" type="password" required minLength="8" value={Password} onChange={(event) => {setPassword(event.target.value)}}/><br/>
-                    <Label>{Error?<span className="login-span-error"> *Email e/ou senha incorreto(s)</span>:<span></span>}</Label>
+                    <Label>{Error?<span className="login-span-error"> *Email e/ou senha incorreto(s)</span>:<></>}</Label>
                     <ButtonPurple>ENTRAR</ButtonPurple>
                 </form>
                 <div className="login-div-bottom">

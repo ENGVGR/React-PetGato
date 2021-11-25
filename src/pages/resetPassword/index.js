@@ -56,7 +56,7 @@ function ResetPassword() {
             <form onSubmit={handleSubmit}>
                 <Label htmlFor="password">Senha</Label>
                 <Input id="password" type="password" value={Password} onChange={(event) => {setPassword(event.target.value)}} required minLength="8"/>
-                <Label htmlFor="password_confirm">Confirme sua senha{ErrorPassword?<span className="reset-password-span-error"> *Precisa ser a mesma senha!</span>:<span></span>}</Label>
+                <Label htmlFor="password_confirm">Confirme sua senha{ErrorPassword?<span className="reset-password-span-error"> *Precisa ser a mesma senha!</span>:<></>}</Label>
                 <Input id="password_confirm" type="password" value={PasswordConfirm} onChange={(event) => {setPasswordConfirm(event.target.value)}} required minLength="8"/><br/>
                 {ErrorExp?<span className="reset-password-span-error"> *Token já utilizado ou expirado!</span>:<></>}
                 {Confirmation?<span className="reset-password-span-error"> *Senha alterada</span>:<></>}
