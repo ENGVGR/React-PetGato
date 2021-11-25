@@ -1,0 +1,80 @@
+.posts-body {
+    min-width: 100vh;
+    min-height: 100vh;
+    text-align: center;
+    .main {
+        display: flex;
+        .main-left {
+            border-right: #e4cccc solid 1px; 
+            width: 27%;
+            min-height: 75vh;
+            margin-top: 5vh;
+            margin-bottom: 5vh;
+            .main-left__input {
+                background: url("../../assets/icons/Icon\ awesome-search.svg") no-repeat;
+                background-size: 8%;
+                background-position-x: 95%;
+                background-position-y: 50%;
+                width: 80%;
+                height: 2em;
+                border: #BA66A3 solid 2px;
+                border-radius: 0.5em;
+                font-size: 1.3em;
+                margin-top: 1vh;
+            }
+            .main-left__description {
+                background: linear-gradient(#ffffff 15%, #FBE9F6 15%);
+                width: 70%;
+                margin: auto;
+                height: 70vh;
+                margin-top: 3vh;
+                padding-right: 5vh;
+                padding-left: 5vh;
+                .description-photo {
+                    width: 25vh;
+                    height: 25vh;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+                .description-span-1 {
+                    font-size: 0.8em;
+                }
+                .description-span-2 {
+                    color: #C882B4;
+                    font-size: 1.5em;
+                }
+                .description-span-3 {
+                    font-size: 0.9em;
+                    opacity: 0.7;
+                }
+                .description-icon {
+                    margin: 2vh;
+                    
+                }
+            }
+        }
+        .main-right {
+            width: 73%;
+            text-align: left;
+            padding-left: 6vh;
+            margin-top: 5vh;
+            margin-bottom: 5vh;
+            display: block;
+            .main-right__title {
+                .title-span-1 {
+                    font-size: 1.8em;
+                    color: #BA66A3;
+                    font-weight: 700;
+                }
+                .title-span-2 {
+                    font-size: 1.3em;
+                }
+            }
+            .main-right__posts {
+                margin-top: 5vh;
+                margin-left: 2vh;
+            }
+        }
+    }
+}
+
