@@ -3,29 +3,29 @@ import message from "../../assets/icons/Icon awesome-comment-alt.svg"
 import view from "../../assets/icons/Icon awesome-eye.svg"
 import "./index.scss"
 
-const Like = ({props}) => {
+const Like = (likes) => {
     return (
         <div className="actions-main">
             <input type="image" src={like} alt="like"/>
-            <span className="main-span">{props.like}</span>
+            <span className="main-span">{likes}</span>
         </div>
     )
 }
 
-const Message = ({props}) => {
+const Message = (messages) => {
     return (
         <div className="actions-main">
             <input type="image" src={message} alt="message"/>
-            <span className="main-span">{props.message}</span>
+            <span className="main-span">{messages}</span>
         </div>
     )
 }
 
-const Views = ({props}) => {
+const Views = (views) => {
     return (
         <div className="actions-main">
                 <input type="image" src={view} alt="view"/>
-                <span className="main-span">{props.views}</span>
+                <span className="main-span">{views}</span>
         </div>
     )
 }
