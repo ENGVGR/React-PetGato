@@ -3,7 +3,7 @@ import message from "../../assets/icons/Icon awesome-comment-alt.svg"
 import view from "../../assets/icons/Icon awesome-eye.svg"
 import "./index.scss"
 
-const Like = (likes) => {
+const Like = ({likes}) => {
     return (
         <div className="actions-main">
             <input type="image" src={like} alt="like"/>
@@ -12,7 +12,7 @@ const Like = (likes) => {
     )
 }
 
-const Message = (messages) => {
+const Message = ({messages}) => {
     return (
         <div className="actions-main">
             <input type="image" src={message} alt="message"/>
@@ -21,7 +21,7 @@ const Message = (messages) => {
     )
 }
 
-const Views = (views) => {
+const Views = ({views}) => {
     return (
         <div className="actions-main">
                 <input type="image" src={view} alt="view"/>
