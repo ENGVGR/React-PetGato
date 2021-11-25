@@ -10,7 +10,7 @@ import { BottomPage } from "../../components/bottompage/index"
 function Profile() {
     return(
         <div className="profile">
-            <NavBar/>
+            <NavBar props={paramsNavbar}/>
             <div className="profile-div">
                 <div className="profile-photo-div">
                     <img className="profile-photo" src={foto} alt="foto-de-perfil"/>
@@ -44,6 +44,18 @@ function Profile() {
             <BottomPage/>
         </div>        
     )
+}
+
+const paramsNavbar = {
+    text_1: "Página Inicial",
+    link_1: "/",
+    text_2: "Sobre Nós",
+    link_2: "/",
+    text_3: "Fale Conosco",
+    link_3: "/",
+    text_4: "Minha conta",
+    link_4: "/",
+    emphasis_t4: true
 }
 
 export default Profile
