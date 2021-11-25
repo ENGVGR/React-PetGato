@@ -3,49 +3,45 @@ import { Like, Message, Views } from "../actions"
 import { ButtonWhite } from "../button"
 import "./index.scss"
 
-const Post = (props) => {
-    
+const Post = ({props}) => {
+
     return (
         <div className="post-body">
             <img className="body-img" src={foto} alt="foto"/>
             <div className="main">
                 <div className="main-tags">
                     <span className="main-tags__span-1">Tags:</span>
-                    <span className="main-tags__span-2">cuidados</span>
-                    <span className="main-tags__span-2">Cães & Gatos</span>
-                    <span className="main-tags__span-2">Guias</span>
+                    {props.tags?props.tags.map(PostTags):<></>}
                 </div>
                 <div className="main-title">
-                    <span className="main-title__span">
-                        As almofadas são importantes: guia 
-                        definitivo de cuidados com as patas
-                    </span>
+                    <span className="main-title__span">{props.title}</span>
                 </div>
                 <div className="main-text">
-                    <span className="main-text__span">
-                        São 3 da tarde e você já pega a coleira para passear com seu companheiro 
-                        de caminhada. Tá aquele sol do cão e o asfalto parece que dá pra fritar
-                        um ovo. Se dá pra fazer uma fritura, imagina o que isso pode fazer com a
-                        patinha do seu pet? Essa é só uma das situações
-                    </span>
+                    <span className="main-text__span">{props.message}</span>
                 </div>
                 <div className="main-buttons">
                     <div>
                         <ButtonWhite className="main-buttons__white">Leia mais</ButtonWhite>
                     </div>
                     <div className="main-buttons__actions">
-                        <Like className="like"/>
+                        <Like likes={props.likes}/>
                     </div>
                     <div className="main-buttons__actions">
-                        <Message/>
+                        <Message messages={props.messages}/>
                     </div>
                     <div className="main-buttons__actions">
-                        <Views/>
+                        <Views views={props.views}/>
                     </div>
                 </div>
             </div>
         </div>
     )
 }
+
+function PostTags(tag) {
+    return (
+        <span className="main-tags__span-2">{tag}</span>
+    )
+} 
 
 export { Post }
