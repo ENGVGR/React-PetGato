@@ -16,45 +16,8 @@
     padding-top: 8em;
 }
 
-.reset-password-span-message {
+.reset-password-span-error {
+    color: red;
+    font-size: 0.8em;
     display: block;
-    margin-top: 0.5em;
-    margin-bottom: 0.8em;
-    font-size: 0.9em;
-    color: grey;
-}
-
-.reset-password-div-bottom {
-    display: flex;
-    margin: auto;
-    width: 100%;
-    justify-content: center;
-    margin-top: 2em;
-}
-
-.reset-password-div-bottom-2 {
-    display: flex;
-    margin: auto;
-    width: 100%;
-    justify-content: center;
-    margin-top: 0.2em;
-}
-
-.reset-password-span-ask {
-    font-size: 1.3em;
-    opacity: 0.4;
-    width: auto;
-    margin-right: 6px;
-}
-
-.reset-password-link {
-    color: #BA66A3;
-    font-size: 1.3em;
-    font-weight: bold;
-    width: auto;
-    text-decoration: none;
-    cursor: pointer;
-    &:hover {
-        color: #C882B4;
-    }
 }
