@@ -1,4 +1,3 @@
-import foto from "../../assets/Esqueci minha senha.jpg"
 import { Like, Message, Views } from "../actions"
 import { ButtonWhite } from "../button"
 import "./index.scss"
@@ -7,7 +6,7 @@ const Post = ({props}) => {
 
     return (
         <div className="post-body">
-            <img className="body-img" src={foto} alt="foto"/>
+            <img className="body-img" src={props.photo} alt="foto"/>
             <div className="main">
                 <div className="main-tags">
                     <span className="main-tags__span-1">Tags:</span>
