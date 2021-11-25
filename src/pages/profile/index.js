@@ -54,7 +54,7 @@ const paramsNavbar = {
     text_3: "Fale Conosco",
     link_3: "/",
     text_4: "Minha conta",
-    link_4: "/",
+    link_4: "/perfil",
     emphasis_t4: true
 }
 

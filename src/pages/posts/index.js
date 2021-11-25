@@ -8,6 +8,7 @@ import "./index.scss"
 import { Post } from "../../components/post"
 import { ButtonWhite } from "../../components/button"
 import { BottomPage } from "../../components/bottompage"
+import { PopularPublication } from "../../components/popularpublication"
 
 export default function Posts() {
 
@@ -31,8 +32,13 @@ export default function Posts() {
                         <img className="description-icon" src={facebook} alt="facebook"/>
                         <img className="description-icon" src={instagram} alt="instagram"/>
                         <img className="description-icon" src={twitter} alt="twitter"/>
-
                     </div>
+                    <div>               
+                    <PopularPublication props={paramsPublication}/>
+                    <PopularPublication props={paramsPublication_2}/>
+                    <PopularPublication props={paramsPublication_2}/>
+                    </div>
+                    <ButtonWhite>Ver todas</ButtonWhite>
                 </div>
                 <div className="main-right">
                     <div className="main-right__title">
@@ -40,6 +46,7 @@ export default function Posts() {
                         <span className="title-span-2">Seja bem-vinda(o) ao blog PetGatô! Confira nosso conteúdo mais recente:</span>
                     </div>
                     <div className="main-right__posts">
+                        <Post props={paramsPost}/>
                         <Post props={paramsPost}/>
                         <Post props={paramsPost}/>
                         <Post props={paramsPost}/>
@@ -63,7 +70,7 @@ const paramsNavbar = {
     text_3: "Fale Conosco",
     link_3: "/",
     text_4: "Entrar",
-    link_4: "/",
+    link_4: "/login",
     emphasis_t1: true
 }
 
@@ -75,4 +82,18 @@ const paramsPost = {
     likes: "36",
     messages: "4",
     views: "88"
+}
+
+const paramsPublication = {
+    first: true,
+    title: "As almofadinhas são importantes: guia definitivo de cuidados com as patas",
+    text: "São 3 da tarde e você já pega a coleira para passear com seu companheiro de caminhada. Tá aquele sol do cão e o...",
+    date: "Publicado em 08 de outubro de 2019"
+}
+
+const paramsPublication_2 = {
+    first: false,
+    title: "As almofadinhas são importantes: guia definitivo de cuidados com as patas",
+    text: "São 3 da tarde e você já pega a coleira para passear com seu companheiro de caminhada. Tá aquele sol do cão e o...",
+    date: "Publicado em 08 de outubro de 2019"
 }

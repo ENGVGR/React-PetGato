@@ -65,7 +65,7 @@ function Register() {
                 </form>
                 <div className="register-div-bottom">
                     <span className="register-span-ask">Já possui conta?</span> 
-                    <Link className="register-link" to="/">Faça login</Link>
+                    <Link className="register-link" to="/login">Faça login</Link>
                 </div>
             </div>
         </div>
