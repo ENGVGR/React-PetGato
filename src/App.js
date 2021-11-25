@@ -6,6 +6,8 @@ import ForgotPassword from './pages/forgotPassword/index'
 import Login from "./pages/login";
 import ResetPassword from "./pages/resetPassword";
 import Profile from "./pages/profile";
+import Posts from "./pages/posts"
+import Teste from "./pages/teste";
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
         <Route path="/recuperacao-de-senha" element={<ForgotPassword/>}/>
         <Route path="/recuperar-senha/:id/:token" element={<ResetPassword/>}/>
         <Route path="/perfil" element={<Profile/>}/>
+        <Route path="/posts" element={<Posts/>}/>
       </Routes>
     </Router>
   )
