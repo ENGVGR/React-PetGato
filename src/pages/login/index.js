@@ -24,7 +24,8 @@ function Login () {
 
             api.post('users/login/', Data)
             .then((resp) => {
-                console.log(resp)
+                sessionStorage.setItem('token', resp.data.auth_token);
+                sessionStorage.setItem('id', resp.data.user_id);
                 setError(false)
             })
             .catch((err) => {
