@@ -15,11 +15,10 @@ export default function Profile() {
     const [Name, setName] = useState()
     const [Email, setEmail] = useState()
     const [Password, setPassword] = useState()
-    const [NewPassword, setNewPassword] = useState()
-    const [NewPasswordConfirm, setNewPasswordConfirm] = useState()
-    const [ErrorPassword, setErrorPasswor] = useState(false)
+    const [NewPassword, setNewPassword] = useState("")
+    const [NewPasswordConfirm, setNewPasswordConfirm] = useState("")
+    const [ErrorLogin, setErrorLogin] = useState(false)
     const [ErrorNewPassword, setErrorNewPassword] = useState(false)
-    const [ErrorEmail, setErrorEmail] = useState(false)
     const [Confirmation, setConfirmation] = useState(false)
 
     if (First) {
@@ -44,69 +43,64 @@ export default function Profile() {
         event.preventDefault()
 
         NewPassword===NewPasswordConfirm?setErrorNewPassword(false):setErrorNewPassword(true)
+        console.log(NewPassword)
 
-        async function Update() {          
-            
-            if (NewPassword!==undefined) {
-                const Data = {
-                    email: Email,
-                    Password: Password
-                }
+        async function Update() {  
 
-                api.post('users/login/', Data, headers)
-                .then((resp) => {
-                    const Data_2 = {
-                        name: Name,
+            if (NewPassword===NewPasswordConfirm) {
+                if (NewPassword!=="") {
+                    const Data = {
                         email: Email,
-                        password: NewPassword,
-                        password_confirmation: NewPasswordConfirm
+                        password: Password
                     }
-                    api.patch(`users/${id}`, Data_2, headers)
-                    .then((resp) => {
-                        console.log(resp)
-                        setConfirmation(true)
-                    })
-                    .catch((err) => {
-                        console.log(err)
-                        setErrorEmail(true)
-                    })
-                            
-                })
-                .catch((err) => {
-                    setErrorPasswor(true)
-                })   
 
-                
-            }
-            else {
-                const Data = {
-                    email: Email,
-                    password: Password
-                }
-
-                api.post('users/login/', Data, headers)
-                .then((resp) => {
-                    const Data_2 = {
-                        name: Name,
-                        email: Email
-                    }
-                    api.patch(`users/${id}`, Data_2, headers)
-                    .then((resp) => {
-                        setConfirmation(true)
+                    api.post('users/login/', Data)
+                    .then(() => {
+                        const Data_2 = {
+                            name: Name,
+                            email: Email,
+                            password: NewPassword,
+                            password_confirmation: NewPasswordConfirm
+                        }
+                        api.patch(`users/${id}`, Data_2, headers)
+                        .then(() => {
+                            setConfirmation(true)
+                            setErrorLogin(false)
+                            setErrorNewPassword(false)
+                        })                   
                     })
-                    .catch((err) => {
-                        setErrorEmail(true)
-                    })             
-                })
-                .catch((err) => {
-                    setErrorPasswor(true)
-                })             
-            }
-        }
+                    .catch(() => {
+                        setErrorLogin(true)
+                    })   
         
-        if (ErrorNewPassword === false) {
-            Update()
+                }
+                else {
+                    const Data = {
+                        email: Email,
+                        password: Password
+                    }
+
+                    api.post('users/login/', Data)
+                    .then(() => {
+                        const Data_2 = {
+                            name: Name,
+                            email: Email,
+                            password: Password
+                        }
+                        api.patch(`users/${id}`, Data_2, headers)
+                        .then(() => {
+                            setConfirmation(true)
+                            setErrorLogin(false)
+                            setErrorNewPassword(false)
+                        })         
+                    })
+                    .catch(() => {
+                        setErrorLogin(true)
+                    })             
+                }
+            }
         }
+        Update()
     }
 
     return(
@@ -126,18 +120,25 @@ export default function Profile() {
                         <div className="profile-input-div">
                             <LabelProfile htmlFor="name">Nome</LabelProfile>
                             <InputProfile id="name" value={Name} onChange={(event) => {setName(event.target.value)}} required/>
+
                             <LabelProfile htmlFor="new-password">Nova senha</LabelProfile>
-                            <InputProfile id="new-password" type="password" value={NewPassword} onChange={(event) => {setNewPassword(event.target.value)}}/>
+                            <InputProfile id="new-password" type="password" value={NewPassword} onChange={(event) => {setNewPassword(event.target.value)}} minLength="8"/>
+
                             <span className="profile-input-span">Deixe em branco caso não queira alterar</span>
                             <LabelProfile htmlFor="password">Senha atual</LabelProfile>
-                            <InputProfile id="password" type="password" value={Password} onChange={(event) => {setPassword(event.target.value)}} required/>   
+                            <InputProfile id="password" type="password" value={Password} onChange={(event) => {setPassword(event.target.value)}} required minLength="8"/>   
+                            {ErrorLogin?<span className="register-span-error"> *Senha incorreta!</span>:<></>}
+
+                            {Confirmation?<span className="register-span-error"> *Mudanças feitas!</span>:<></>}
                             <ButtonWhite>Salvar</ButtonWhite>
                         </div>
                         <div className="profile-input-div-2">
                             <LabelProfile htmlFor="email">Email</LabelProfile>
-                            <InputProfile id="email" type="email" value={Email} onChange={(event) => {setEmail(event.target.value)}} required/>
+                            <InputProfile id="email" type="email" className="email" value={Email} disabled/>
+
                             <LabelProfile htmlFor="new-password-conf">Confirme sua senha</LabelProfile>
-                            <InputProfile id="new-password-conf" type="password" value={NewPasswordConfirm} onChange={(event) => {setNewPasswordConfirm(event.target.value)}}/>
+                            <InputProfile id="new-password-conf" type="password" value={NewPasswordConfirm} onChange={(event) => {setNewPasswordConfirm(event.target.value)}} minLength="8"/>
+                            {ErrorNewPassword?<span className="register-span-error"> *Precisa ser a mesma senha!</span>:<></>}
                         </div>
                     </form>
                 </div>
