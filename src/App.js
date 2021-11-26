@@ -14,7 +14,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Posts/>}/>
-        <Route path="/login" element={<Login/>}/>
+        <Route path="/login" element={user?<Profile/>:<Login/>}/>
         <Route path="/registro" element={<Register/>}/>
         <Route path="/recuperacao-de-senha" element={<ForgotPassword/>}/>
         <Route path="/recuperar-senha/:id/:token" element={<ResetPassword/>}/>
@@ -23,5 +23,7 @@ function App() {
     </Router>
   )
 }
+
+const user = sessionStorage.getItem('id')
 
 export default App
