@@ -11,7 +11,7 @@ import api from '../../api/api';
 
 function Profile() {
 
-    
+    const [First, setFirst] = useState(true)
     const [Name, setName] = useState()
     const [Email, setEmail] = useState()
     const [Password, setPassword] = useState()
@@ -22,7 +22,23 @@ function Profile() {
     const [ErrorEmail, setErrorEmail] = useState(false)
     const [Confirmation, setConfirmation] = useState(false)
 
-   
+    if (First) {
+        async function Get() {
+            api.get(`users/${id}`, headers)
+            .then((resp) => {
+                const Data = resp.data
+                if (Data) {
+                    setName(Data.name)
+                    setEmail(Data.email)
+                    setFirst(false)
+                }        
+            })
+            .catch((err) => {
+                console.log(err)
+            })      
+        }
+        Get()
+    }
 
     function handleSubmit(event) {
         event.preventDefault()
@@ -130,8 +146,6 @@ function Profile() {
         </div>        
     )
 }
-
-
 
 const id = sessionStorage.getItem('id')
 const headers = {
