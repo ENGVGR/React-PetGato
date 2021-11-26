@@ -49,7 +49,7 @@ function ForgotPassword() {
                 </form>
                 <div className="forgot-password-div-bottom">
                     <span className="forgot-password-span-ask">Lembrou a senha?</span> 
-                    <Link className="forgot-password-link" to="/">Faça login</Link>
+                    <Link className="forgot-password-link" to="/login">Faça login</Link>
                 </div>
                 <div className="forgot-password-div-bottom-2">
                     <span className="forgot-password-span-ask">Ainda não tem conta?</span> 

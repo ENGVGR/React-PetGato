@@ -69,9 +69,18 @@
     width: 40%;
 }
 
+.profile-span-error {
+    color: red;
+    font-size: 0.8em;
+    display: block;
+}
+
 .profile-input-div-2 {
     height: 55vh;
     width: 50%;
+    .email {
+        background-color: #dbcfcf
+    }
 }
 
 .profile-input-span {

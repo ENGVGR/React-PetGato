@@ -11,7 +11,7 @@ const Input = styled.input`
 const InputProfile = styled.input`
     border: 1px solid #C882B4;
     height: 1.7em;
-    font-size: 1.3em;
+    font-size: 1.1em;
     text-align: center;
     min-width: 45vh;
 `;
