@@ -9,7 +9,7 @@ import { BottomPage } from "../../components/bottompage/index"
 import { useState } from "react"
 import api from '../../api/api';
 
-function Profile() {
+export default function Profile() {
 
     const [First, setFirst] = useState(true)
     const [Name, setName] = useState()
@@ -23,14 +23,14 @@ function Profile() {
     const [Confirmation, setConfirmation] = useState(false)
 
     if (First) {
+        setFirst(false)
         async function Get() {
             api.get(`users/${id}`, headers)
             .then((resp) => {
                 const Data = resp.data
                 if (Data) {
                     setName(Data.name)
-                    setEmail(Data.email)
-                    setFirst(false)
+                    setEmail(Data.email)      
                 }        
             })
             .catch((err) => {
@@ -47,7 +47,7 @@ function Profile() {
 
         async function Update() {          
             
-            if (NewPassword===undefined) {
+            if (NewPassword!==undefined) {
                 const Data = {
                     email: Email,
                     Password: Password
@@ -127,7 +127,7 @@ function Profile() {
                             <LabelProfile htmlFor="name">Nome</LabelProfile>
                             <InputProfile id="name" value={Name} onChange={(event) => {setName(event.target.value)}} required/>
                             <LabelProfile htmlFor="new-password">Nova senha</LabelProfile>
-                            <InputProfile id="new-password" type="password"/>
+                            <InputProfile id="new-password" type="password" value={NewPassword} onChange={(event) => {setNewPassword(event.target.value)}}/>
                             <span className="profile-input-span">Deixe em branco caso não queira alterar</span>
                             <LabelProfile htmlFor="password">Senha atual</LabelProfile>
                             <InputProfile id="password" type="password" value={Password} onChange={(event) => {setPassword(event.target.value)}} required/>   
@@ -137,7 +137,7 @@ function Profile() {
                             <LabelProfile htmlFor="email">Email</LabelProfile>
                             <InputProfile id="email" type="email" value={Email} onChange={(event) => {setEmail(event.target.value)}} required/>
                             <LabelProfile htmlFor="new-password-conf">Confirme sua senha</LabelProfile>
-                            <InputProfile id="new-password-conf" type="password"/>
+                            <InputProfile id="new-password-conf" type="password" value={NewPasswordConfirm} onChange={(event) => {setNewPasswordConfirm(event.target.value)}}/>
                         </div>
                     </form>
                 </div>
@@ -148,6 +148,7 @@ function Profile() {
 }
 
 const id = sessionStorage.getItem('id')
+
 const headers = {
     headers: {Authorization: sessionStorage.getItem('token')}
 }
@@ -163,5 +164,3 @@ const paramsNavbar = {
     link_4: "/perfil",
     emphasis_t4: true
 }
-
-export default Profile
