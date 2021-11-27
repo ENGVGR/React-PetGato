@@ -1,9 +1,40 @@
+@mixin size($width: 67%, $margin_left: 4%, $margin_top: 3%) {
+    min-width: $width;
+    max-width: $width;
+    margin-left: $margin_left;
+    margin-top: $margin_top;
+}
+
 .specificPost {
     min-width: 100vh;
     &__backPost {
-        min-width: 67%;
-        max-width: 67%;
-        margin-left: 4%;
-        margin-top: 3%;
+        @include size;
+    }
+    &__title {
+        @include size;
+        &-text {
+            font-size: 2em;
+            font-weight: 1000;
+            color: #BA66A3;
+        }
+    }
+    &__subTitle {
+        @include size($margin_top: 1%);
+        display: flex;
+        justify-content: space-between;
+        &-text {
+            opacity: 0.6;
+        }
+        &-views {
+            display: flex;
+            align-items: center;
+            &__image {
+                width: 50%;
+                margin-right: 10%;
+            }
+            &__number {
+                opacity: 0.6;
+            }
+        }
     }
 }
