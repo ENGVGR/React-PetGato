@@ -1,3 +1,9 @@
-.specifiPost {
-    
+.specificPost {
+    min-width: 100vh;
+    &__backPost {
+        min-width: 67%;
+        max-width: 67%;
+        margin-left: 4%;
+        margin-top: 3%;
+    }
 }
