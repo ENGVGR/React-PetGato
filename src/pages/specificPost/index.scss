@@ -78,6 +78,31 @@
             &__search {
                 @include button
             }
+            &__button {
+                text-align: center;
+            }
+        }
+    }
+    .especificPostBottom {
+        @include size;
+        &__comment {
+            &-label {
+                margin-bottom: 2%;
+                margin-top: 2%;
+                &__text {
+                    font-size: 1.5em;
+                    font-weight: 800;
+                    color: #706a6a;
+                }
+            }
+            &-text {
+            resize: none;
+            border-color: #BA66A3;
+            font-size: 1.3em;
+            }
+            &-button {
+                text-align: right;
+            }
         }
     }
 }

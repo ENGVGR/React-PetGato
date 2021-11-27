@@ -5,6 +5,8 @@ import banner from '../../assets/Esqueci minha senha.jpg'
 import './index.scss'
 import { ExploreTags } from '../../components/exploretags'
 import { PopularPublication } from '../../components/popularpublication'
+import { ButtonWhite } from '../../components/button'
+import { Like } from '../../components/actions'
 
 export default function SpecificPost({props}) {
 
@@ -69,8 +71,24 @@ export default function SpecificPost({props}) {
                         <PopularPublication props={paramsPublication2}/>
                         <PopularPublication props={paramsPublication3}/>
                     </div>
+                    <div className="specificPostRight__button">
+                    <ButtonWhite>Ver todas</ButtonWhite>
+                    </div>
                 </div>
-                
+            </div>
+            <div className="especificPostBottom">
+                <div>
+                    <Like likes={"52"}/>
+                </div>
+                <div className="especificPostBottom__comment">
+                    <div className="especificPostBottom__comment-label">
+                        <label htmlFor="comment" className="especificPostBottom__comment-label__text">Gostou? Deixe um comentário abaixo:</label>
+                    </div>
+                    <textarea id="comment" className="especificPostBottom__comment-text" rows="5" cols="86" placeholder="Solta o verbo, meu consagrado..."/>
+                    <div className="especificPostBottom__comment-button">
+                        <ButtonWhite>Enviar</ButtonWhite>
+                    </div>
+                </div>
             </div>
         </div>
     )
