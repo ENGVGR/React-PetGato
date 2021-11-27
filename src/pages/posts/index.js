@@ -5,7 +5,7 @@ import instagram from "../../assets/icons/Icon awesome-instagram.svg"
 import twitter from "../../assets/icons/Icon awesome-twitter-square.svg" 
 import photo_post from "../../assets/Esqueci minha senha.jpg"
 import "./index.scss"
-import { Post } from "../../components/post"
+import { PreviewPost } from "../../components/previewPost"
 import { ButtonWhite } from "../../components/button"
 import { BottomPage } from "../../components/bottompage"
 import { PopularPublication } from "../../components/popularpublication"
@@ -46,11 +46,11 @@ export default function Posts() {
                         <span className="title-span-2">Seja bem-vinda(o) ao blog PetGatô! Confira nosso conteúdo mais recente:</span>
                     </div>
                     <div className="main-right__posts">
-                        <Post props={paramsPost}/>
-                        <Post props={paramsPost}/>
-                        <Post props={paramsPost}/>
-                        <Post props={paramsPost}/>
-                        <Post props={paramsPost}/>
+                        <PreviewPost props={paramsPost}/>
+                        <PreviewPost props={paramsPost}/>
+                        <PreviewPost props={paramsPost}/>
+                        <PreviewPost props={paramsPost}/>
+                        <PreviewPost props={paramsPost}/>
                     </div>
                     <div className="main-right__button">
                         <ButtonWhite className="button-white">PUBLICAÇÕES ANTERIORES</ButtonWhite>
