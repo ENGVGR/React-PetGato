@@ -3,6 +3,7 @@ import { NavBar } from '../../components/navbar'
 import views from '../../assets/icons/Icon awesome-eye.svg'
 import banner from '../../assets/Esqueci minha senha.jpg'
 import './index.scss'
+import { ExploreTags } from '../../components/exploretags'
 
 export default function SpecificPost({props}) {
 
@@ -57,7 +58,13 @@ export default function SpecificPost({props}) {
                 </div>
                 <div className="specificPostRight">
                     <input className="specificPostRight__search"/>
+                    <div>
+                        <ExploreTags props={paramsExploreTags}/>
+                        <ExploreTags props={paramsExploreTags2}/>
+                        <ExploreTags props={paramsExploreTags3}/>
+                    </div>
                 </div>
+                
             </div>
         </div>
     )
@@ -72,4 +79,22 @@ const paramsNavbar = {
     link_3: "/",
     text_4: "Entrar",
     link_4: "/login"
+}
+
+const paramsExploreTags = {
+    first: true,
+    tag: "Cuidados",
+    text: "São 3 da tarde e você já pega a coleira para passear com seu companheiro de caminhada. Tá aquele sol do cão e o..."
+}
+
+const paramsExploreTags2 = {
+    first: false,
+    tag: "Cães & Gatos",
+    text: "São 3 da tarde e você já pega a coleira para passear com seu companheiro de caminhada. Tá aquele sol do cão e o..."
+}
+
+const paramsExploreTags3 = {
+    first: false,
+    tag: "Guias",
+    text: "São 3 da tarde e você já pega a coleira para passear com seu companheiro de caminhada. Tá aquele sol do cão e o..."
 }

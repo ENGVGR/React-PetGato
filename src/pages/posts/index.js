@@ -34,9 +34,9 @@ export default function Posts() {
                         <img className="description-icon" src={twitter} alt="twitter"/>
                     </div>
                     <div>               
-                    <PopularPublication props={paramsPublication}/>
-                    <PopularPublication props={paramsPublication_2}/>
-                    <PopularPublication props={paramsPublication_2}/>
+                        <PopularPublication props={paramsPublication}/>
+                        <PopularPublication props={paramsPublication_2}/>
+                        <PopularPublication props={paramsPublication_2}/>
                     </div>
                     <ButtonWhite>Ver todas</ButtonWhite>
                 </div>
