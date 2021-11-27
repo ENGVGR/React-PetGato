@@ -1,4 +1,5 @@
 import './index.scss'
+import { useNavigate } from "react-router";
 import { Logo } from "../../components/logo"
 import Foto_Esqueci_Minha_Senha from '../../assets/Esqueci minha senha.jpg'
 import { Input, Label } from '../../components/input'
@@ -14,14 +15,12 @@ function ResetPassword() {
     const [ErrorPassword, setErrorPassword] = useState(false)
     const [ErrorExp, setErrorExp] = useState(false)
     const [Confirmation, setConfirmation] = useState(false)
-    const { id, token } = useParams()
-    
-    
+    const { id, token } = useParams()  
+    const navigate = useNavigate(); 
 
     function handleSubmit(event) {
         event.preventDefault()
         
-
         Password===PasswordConfirm?setErrorPassword(false):setErrorPassword(true)
 
         async function post() {
@@ -30,11 +29,11 @@ function ResetPassword() {
                 password_confirmation: PasswordConfirm
             }
 
-
             api.patch(`recuperar-senha/${id}/${token}`, Data)
             .then((resp) => {
                 console.log(resp)
                 setConfirmation(true)
+                navigate("/login")
             })
             .catch((err) => {
                 console.log(err)

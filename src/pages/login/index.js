@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import { useNavigate } from "react-router";
 import { ButtonPurple } from "../../components/button"
 import { Input, Label } from "../../components/input"
 import { Logo } from "../../components/logo"
@@ -12,6 +13,7 @@ function Login () {
     const [Email, setEmail] = useState()
     const [Password, setPassword] = useState()
     const [Error, setError] = useState(false)
+    const navigate = useNavigate();
 
     function handleSubmit(event) {
         event.preventDefault()
@@ -27,6 +29,7 @@ function Login () {
                 sessionStorage.setItem('token', resp.data.auth_token);
                 sessionStorage.setItem('id', resp.data.user_id);
                 setError(false)
+                navigate('/')
             })
             .catch((err) => {
                 console.log(err)
@@ -35,7 +38,6 @@ function Login () {
         }
             post()
     }
-
 
     return (
 

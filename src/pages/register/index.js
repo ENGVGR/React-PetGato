@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from "react-router";
 import { Link } from 'react-router-dom';
 import api from '../../api/api';
 import cadastro from '../../assets/Cadastro.jpg'
@@ -16,6 +17,7 @@ function Register() {
     const [PasswordConfirm, setPasswordConfirm] = useState()
     const [ErrorPassword, setErrorPassword] = useState(false)
     const [ErrorEmail, setErrorEmail] = useState(false)
+    const navigate = useNavigate();
 
     function handleSubmit(event) {
         event.preventDefault()
@@ -33,6 +35,7 @@ function Register() {
             api.post('users/', Data)
             .then((resp) => {
                 console.log(resp)
+                navigate("/login")
             })
             .catch((err) => {
                 console.log(err)
@@ -44,7 +47,6 @@ function Register() {
             post()
         }
     }
-
 
     return (
 
