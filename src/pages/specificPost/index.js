@@ -8,6 +8,7 @@ import { PopularPublication } from '../../components/popularpublication'
 import { ButtonWhite } from '../../components/button'
 import { Like } from '../../components/actions'
 import { RespUserComment, UserComment } from '../../components/usercomment'
+import { BottomPage } from '../../components/bottompage'
 
 export default function SpecificPost({props}) {
 
@@ -106,6 +107,9 @@ export default function SpecificPost({props}) {
                         <ButtonWhite className="especificPostBottom__postComment-resp__button">RESPONDER</ButtonWhite>
                     </div>        
                 </div>
+            </div>
+            <div className="bottom">
+            <BottomPage/>
             </div>
         </div>
     )

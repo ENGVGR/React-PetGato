@@ -66,8 +66,8 @@
                 }
             }
             &__line {
-                width: 40%;
-                margin-left: 15%;
+                width: 80%;
+                margin-left: 5%;
                 border-top: #dbd3d3 solid 1px;
             }
         }
@@ -96,9 +96,9 @@
                 }
             }
             &-text {
-            resize: none;
-            border-color: #BA66A3;
-            font-size: 1.3em;
+                resize: none;
+                border-color: #BA66A3;
+                font-size: 1.3em;
             }
             &-button {
                 text-align: right;
@@ -115,5 +115,8 @@
                 }
             }
         }
+    }
+    .bottom {
+        margin-top: 3%;
     }
 }
