@@ -37,4 +37,16 @@
             }
         }
     }
+    &__banner {
+        @include size;
+        max-height: 50vh;
+        object-fit: cover;
+    }
+    &__content {
+        @include size;
+        &-text {
+            font-size: 1.2em;
+            opacity: 0.6;
+        }
+    }
 }
