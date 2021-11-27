@@ -4,6 +4,7 @@ import views from '../../assets/icons/Icon awesome-eye.svg'
 import banner from '../../assets/Esqueci minha senha.jpg'
 import './index.scss'
 import { ExploreTags } from '../../components/exploretags'
+import { PopularPublication } from '../../components/popularpublication'
 
 export default function SpecificPost({props}) {
 
@@ -63,6 +64,11 @@ export default function SpecificPost({props}) {
                         <ExploreTags props={paramsExploreTags2}/>
                         <ExploreTags props={paramsExploreTags3}/>
                     </div>
+                    <div>
+                        <PopularPublication props={paramsPublication}/>
+                        <PopularPublication props={paramsPublication2}/>
+                        <PopularPublication props={paramsPublication3}/>
+                    </div>
                 </div>
                 
             </div>
@@ -97,4 +103,25 @@ const paramsExploreTags3 = {
     first: false,
     tag: "Guias",
     text: "São 3 da tarde e você já pega a coleira para passear com seu companheiro de caminhada. Tá aquele sol do cão e o..."
+}
+
+const paramsPublication = {
+    first: true,
+    title: "As almofadinhas são importantes: guia definitivo de cuidados com as patas",
+    text: "São 3 da tarde e você já pega a coleira para passear com seu companheiro de caminhada. Tá aquele sol do cão e o...",
+    date: "Publicado em 08 de outubro de 2019"
+}
+
+const paramsPublication2 = {
+    first: false,
+    title: "As almofadinhas são importantes: guia definitivo de cuidados com as patas",
+    text: "São 3 da tarde e você já pega a coleira para passear com seu companheiro de caminhada. Tá aquele sol do cão e o...",
+    date: "Publicado em 08 de outubro de 2019"
+}
+
+const paramsPublication3 = {
+    first: false,
+    title: "As almofadinhas são importantes: guia definitivo de cuidados com as patas",
+    text: "São 3 da tarde e você já pega a coleira para passear com seu companheiro de caminhada. Tá aquele sol do cão e o...",
+    date: "Publicado em 08 de outubro de 2019"
 }

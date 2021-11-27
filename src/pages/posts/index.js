@@ -33,7 +33,7 @@ export default function Posts() {
                         <img className="description-icon" src={instagram} alt="instagram"/>
                         <img className="description-icon" src={twitter} alt="twitter"/>
                     </div>
-                    <div>               
+                    <div className="main-left__popularPublication">               
                         <PopularPublication props={paramsPublication}/>
                         <PopularPublication props={paramsPublication_2}/>
                         <PopularPublication props={paramsPublication_2}/>
