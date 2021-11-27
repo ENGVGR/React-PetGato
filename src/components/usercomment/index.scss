@@ -1,0 +1,47 @@
+.userComment {
+    display: flex;
+    &__avatar {
+        width: 16vh;
+        height: 16vh;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    &__content {
+        margin-left: 3%;
+        flex-wrap: wrap;
+        &-name {
+            font-size: 1.2em;
+            font-weight: 1000;
+        }
+        &-date {
+            color: #807777;
+        }
+        &-comment {
+            font-size: 1.1em;
+        }
+    }
+}
+
+.respUserComment {
+    display: flex;
+    &__avatar {
+        width: 11vh;
+        height: 11vh;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    &__content {
+        margin-left: 3%;
+        flex-wrap: wrap;
+        &-name {
+            font-size: 1.2em;
+            font-weight: 1000;
+        }
+        &-date {
+            color: #807777;
+        }
+        &-comment {
+            font-size: 1.1em;
+        }
+    }
+}
