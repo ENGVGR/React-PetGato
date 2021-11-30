@@ -20,7 +20,7 @@ function App() {
         <Route path="/recuperacao-de-senha" element={<ForgotPassword/>}/>
         <Route path="/recuperar-senha/:id/:token" element={<ResetPassword/>}/>
         <Route path="/perfil" element={<Profile/>}/>  
-        <Route path="/post" element={<Post/>}/>
+        <Route path="/post/:post_id" element={<Post/>}/>
       </Routes>
     </Router>
   )
