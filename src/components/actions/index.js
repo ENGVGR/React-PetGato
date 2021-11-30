@@ -36,7 +36,7 @@ const Like = ({user_id, post_id}) => {
             })
         } GetLikes()
 
-        async function Like() {
+        async function GetLike() {
             api.get(`/post/${user_id}/${post_id}`)
             .then ((resp) => {
                 if (resp.data === "Deu like!") {
@@ -46,7 +46,7 @@ const Like = ({user_id, post_id}) => {
                     setClick(false)
                 }
             })
-        } Like()
+        } GetLike()
     })
 
     return (
