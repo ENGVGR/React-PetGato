@@ -118,6 +118,8 @@ export default function SpecificPost({props}) {
     )
 }
 
+const user_id = sessionStorage.getItem('id')
+
 const paramsNavbar = {
     text_1: "Página Inicial",
     link_1: "/",
@@ -125,8 +127,8 @@ const paramsNavbar = {
     link_2: "/",
     text_3: "Fale Conosco",
     link_3: "/",
-    text_4: "Entrar",
-    link_4: "/login"
+    text_4: user_id?"Perfil":"Entrar",
+    link_4: user_id?"/perfil":"/login",
 }
 
 const paramsExploreTags = {
