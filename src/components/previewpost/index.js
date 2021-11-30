@@ -3,7 +3,7 @@ import { Like, Message, Views } from "../actions"
 import { ButtonWhite } from "../button"
 import "./index.scss"
 
-const PreviewPost = ({props}) => {
+const PreviewPost = ({props,likes}) => {
 
     return (
         <div className="post-body">
@@ -27,7 +27,7 @@ const PreviewPost = ({props}) => {
                         <ButtonWhite className="main-buttons__white">Leia mais</ButtonWhite>
                     </div>
                     <div className="main-buttons__actions">
-                        <Like likes={props.likes}/>
+                        <Like likes={likes}/>
                     </div>
                     <div className="main-buttons__actions">
                         <Message messages={props.messages}/>
