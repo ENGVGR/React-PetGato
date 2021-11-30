@@ -9,22 +9,8 @@ import { PreviewPost } from "../../components/previewpost"
 import { ButtonWhite } from "../../components/button"
 import { BottomPage } from "../../components/bottompage"
 import { PopularPublication } from "../../components/popularpublication"
-import api from "../../api/api"
-import { useState } from "react"
 
 export default function Posts() {
-
-    function GetLikes(post_id) {
-        const [Likes,setLikes] = useState(0)
-
-        api.get(`/post/${post_id}`)
-        .then((resp) => {     
-            setLikes(resp.data)
-        })
-        return (
-            Likes
-        )
-    } 
 
     return (
         <div className="posts-body">
@@ -59,11 +45,11 @@ export default function Posts() {
                         <span className="title-span-2">Seja bem-vinda(o) ao blog PetGatô! Confira nosso conteúdo mais recente:</span>
                     </div>
                     <div className="main-right__posts">
-                        <PreviewPost props={ParamsPost} likes={GetLikes(3)}/>
-                        <PreviewPost props={ParamsPost} likes={GetLikes(3)}/>
-                        <PreviewPost props={ParamsPost} likes={GetLikes(3)}/>
-                        <PreviewPost props={ParamsPost} likes={GetLikes(3)}/>
-                        <PreviewPost props={ParamsPost} likes={GetLikes(3)}/>
+                        <PreviewPost props={ParamsPost} user_id={sessionStorage.getItem('id')} post_id={3}/>
+                        <PreviewPost props={ParamsPost} user_id={sessionStorage.getItem('id')} post_id={3}/>
+                        <PreviewPost props={ParamsPost} user_id={sessionStorage.getItem('id')} post_id={3}/>
+                        <PreviewPost props={ParamsPost} user_id={sessionStorage.getItem('id')} post_id={3}/>
+                        <PreviewPost props={ParamsPost} user_id={sessionStorage.getItem('id')} post_id={3}/>
                     </div>
                     <div className="main-right__button">
                         <ButtonWhite className="button-white">PUBLICAÇÕES ANTERIORES</ButtonWhite>
