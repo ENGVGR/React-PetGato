@@ -57,7 +57,7 @@ const Like = ({user_id, post_id}) => {
     )
 }
 
-const Message = ({messages}) => {
+const Message = ({messages=0}) => {
     return (
         <div className="actions-main">
             <input type="image" src={comment} alt="message"/>
