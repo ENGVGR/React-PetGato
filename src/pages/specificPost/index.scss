@@ -1,0 +1,122 @@
+@mixin size($width: 70%, $margin_left: 4%, $margin_top: 3%) {
+    min-width: $width;
+    max-width: $width;
+    margin-left: $margin_left;
+    margin-top: $margin_top;
+}
+
+@mixin button {
+    background: url("../../assets/icons/Icon\ awesome-search.svg") no-repeat;
+    background-size: 8%;
+    background-position-x: 95%;
+    background-position-y: 50%;
+    width: 90%;
+    height: 2em;
+    border: #BA66A3 solid 2px;
+    border-radius: 0.3em;
+    font-size: 1.3em;
+    margin-top: 1vh;
+}
+
+.body-specificPost {
+    min-width: 100vh;
+    .specificPost {
+        display: flex;
+        .specificPostLeft {
+            @include size;
+            &__backPost {
+                margin-bottom: 3%;
+            }
+            &__title {              
+                &-text {
+                    font-size: 2em;
+                    font-weight: 1000;
+                    color: #BA66A3;
+                }
+            }
+            &__subTitle {
+                margin-top: 1%;
+                display: flex;
+                justify-content: space-between;
+                &-text {
+                    opacity: 0.6;
+                }
+                &-views {
+                    display: flex;
+                    align-items: center;
+                    &__image {
+                        width: 50%;
+                        margin-right: 10%;
+                    }
+                    &__number {
+                        opacity: 0.6;
+                    }
+                }
+            }
+            &__banner {
+                margin-top: 3%;
+                width: 100%;
+                max-height: 50vh;
+                object-fit: cover;
+            }
+            &__content {
+                &-text {
+                    font-size: 1.2em;
+                    opacity: 0.6;
+                }
+            }
+            &__line {
+                width: 80%;
+                margin-left: 5%;
+                border-top: #dbd3d3 solid 1px;
+            }
+        }
+        .specificPostRight {
+            @include size($width: 21%, $margin_left: 2%);
+            padding-left: 2%;
+            border-left: #dbd3d3 solid 1px;
+            &__search {
+                @include button
+            }
+            &__button {
+                text-align: center;
+            }
+        }
+    }
+    .especificPostBottom {
+        @include size;
+        &__comment {
+            &-label {
+                margin-bottom: 2%;
+                margin-top: 2%;
+                &__text {
+                    font-size: 1.5em;
+                    font-weight: 800;
+                    color: #706a6a;
+                }
+            }
+            &-text {
+                resize: none;
+                border-color: #BA66A3;
+                font-size: 1.3em;
+            }
+            &-button {
+                text-align: right;
+            }
+        }
+        &__postComment {
+            margin-top: 3%;
+            &-resp {
+                margin-left: 15%;
+                margin-top: 3%;
+                &__button {
+                    width: 20%;
+                    font-size: 1.2em;
+                }
+            }
+        }
+    }
+    .bottom {
+        margin-top: 3%;
+    }
+}

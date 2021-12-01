@@ -2,7 +2,7 @@ import { Like, Message, Views } from "../actions"
 import { ButtonWhite } from "../button"
 import "./index.scss"
 
-const Post = ({props}) => {
+const PreviewPost = ({props}) => {
 
     return (
         <div className="post-body">
@@ -43,4 +43,4 @@ function PostTags(tag) {
     )
 } 
 
-export { Post }
+export { PreviewPost }
