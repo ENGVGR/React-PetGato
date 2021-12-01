@@ -10,14 +10,27 @@ import { Like } from '../../components/actions'
 import { RespUserComment, UserComment } from '../../components/usercomment'
 import { BottomPage } from '../../components/bottompage'
 import { useParams } from 'react-router'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import api from '../../api/api'
+import UserContext from '../../components/usecontext'
 
 export default function SpecificPost({props}) {
 
     const { post_id } = useParams() 
     const [Views, setViews] = useState(0)
     const [First, setFirst] = useState(true)
+    const {user} = useContext(UserContext)
+
+    const paramsNavbar = {
+        text_1: "Página Inicial",
+        link_1: "/",
+        text_2: "Sobre Nós",
+        link_2: "/",
+        text_3: "Fale Conosco",
+        link_3: "/",
+        text_4: user?"Minha Conta":"Entrar",
+        link_4: user?"/perfil":"/login",
+    }
 
     useEffect(() => {
         
@@ -141,19 +154,6 @@ export default function SpecificPost({props}) {
             </div>
         </div>
     )
-}
-
-const user_id = sessionStorage.getItem('id')
-
-const paramsNavbar = {
-    text_1: "Página Inicial",
-    link_1: "/",
-    text_2: "Sobre Nós",
-    link_2: "/",
-    text_3: "Fale Conosco",
-    link_3: "/",
-    text_4: user_id?"Perfil":"Entrar",
-    link_4: user_id?"/perfil":"/login",
 }
 
 const paramsExploreTags = {

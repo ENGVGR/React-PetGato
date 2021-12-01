@@ -5,8 +5,9 @@ import { Input, Label } from "../../components/input"
 import { Logo } from "../../components/logo"
 import login from '../../assets/Login.jpg'
 import './index.scss'
-import { useState } from "react"
+import { useContext, useState } from "react"
 import api from '../../api/api';
+import UserContext  from "../../components/usecontext";
 
 function Login () {
 
@@ -14,6 +15,7 @@ function Login () {
     const [Password, setPassword] = useState()
     const [Error, setError] = useState(false)
     const navigate = useNavigate();
+    const {user, setUser} = useContext(UserContext)
 
     function handleSubmit(event) {
         event.preventDefault()
@@ -27,7 +29,8 @@ function Login () {
             api.post('users/login/', Data)
             .then((resp) => {
                 sessionStorage.setItem('token', resp.data.auth_token);
-                sessionStorage.setItem('id', resp.data.user_id);
+                sessionStorage.setItem('id', resp.data.user_id)
+                setUser(resp.data.user_id)
                 setError(false)
                 navigate('/')
             })

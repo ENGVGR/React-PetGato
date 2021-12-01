@@ -9,8 +9,24 @@ import { PreviewPost } from "../../components/previewpost"
 import { ButtonWhite } from "../../components/button"
 import { BottomPage } from "../../components/bottompage"
 import { PopularPublication } from "../../components/popularpublication"
+import { useContext } from "react"
+import UserContext from "../../components/usecontext"
 
 export default function Posts() {
+
+    const {user} = useContext(UserContext)
+
+    const paramsNavbar = {
+        text_1: "Página Inicial",
+        link_1: "/",
+        text_2: "Sobre Nós",
+        link_2: "/",
+        text_3: "Fale Conosco",
+        link_3: "/",
+        text_4: user?"Minha Conta":"Entrar",
+        link_4: user?"/perfil":"/login",
+        emphasis_t1: true
+    }
 
     return (
         <div className="posts-body">
@@ -59,20 +75,6 @@ export default function Posts() {
             <BottomPage/>
         </div>
     )
-}
-
-const user_id = sessionStorage.getItem('id')
-
-const paramsNavbar = {
-    text_1: "Página Inicial",
-    link_1: "/",
-    text_2: "Sobre Nós",
-    link_2: "/",
-    text_3: "Fale Conosco",
-    link_3: "/",
-    text_4: user_id?"Perfil":"Entrar",
-    link_4: user_id?"/perfil":"/login",
-    emphasis_t1: true
 }
 
 const ParamsPost = {
