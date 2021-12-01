@@ -33,7 +33,7 @@ const PreviewPost = ({props, user_id, post_id}) => {
                         <Message messages={props.messages}/>
                     </div>
                     <div className="main-buttons__actions">
-                        <Views views={props.views}/>
+                        <Views post_id={post_id}/>
                     </div>
                 </div>
             </div>

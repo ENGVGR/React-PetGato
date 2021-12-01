@@ -10,10 +10,35 @@ import { Like } from '../../components/actions'
 import { RespUserComment, UserComment } from '../../components/usercomment'
 import { BottomPage } from '../../components/bottompage'
 import { useParams } from 'react-router'
+import { useEffect, useState } from 'react'
+import api from '../../api/api'
 
 export default function SpecificPost({props}) {
 
     const { post_id } = useParams() 
+    const [Views, setViews] = useState(0)
+    const [First, setFirst] = useState(true)
+
+    useEffect(() => {
+        
+        async function GetViews() {
+            api.get(`/posts/${post_id}`)
+            .then((resp) => {
+                setViews(resp.data.views)
+            })
+        } GetViews()
+
+        async function PostViews() {
+            const Data = {views: Views + 1}
+
+            api.patch(`/posts/${post_id}`, Data)
+            
+        } if (First & Views !== 0) {
+            PostViews()
+            setFirst(false)
+        }
+        
+    },[First, Views, post_id])
 
     return (
         <div className="body-specificPost">
@@ -30,7 +55,7 @@ export default function SpecificPost({props}) {
                         <span className="specificPostLeft__subTitle-text">Publicado em 08 de outubro de 2019 às 09h28</span>
                         <div className="specificPostLeft__subTitle-views">
                             <img className="specificPostLeft__subTitle-views__image" src={views} alt="views"/>
-                            <span className="specificPostLeft__subTitle-views__number">88</span>
+                            <span className="specificPostLeft__subTitle-views__number">{Views}</span>
                         </div>
                     </div>
                     <img className="specificPostLeft__banner" src={banner} alt="banner"/>

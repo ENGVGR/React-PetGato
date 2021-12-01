@@ -46,7 +46,7 @@ const Like = ({user_id, post_id}) => {
                     setClick(false)
                 }
             })
-        } GetLike()
+        } if (user_id) {GetLike()}
     })
 
     return (
@@ -66,11 +66,24 @@ const Message = ({messages}) => {
     )
 }
 
-const Views = ({views}) => {
+const Views = ({post_id}) => {
+
+    const [Views, setViews] = useState(0)
+
+    useEffect(() => {
+        
+        async function GetViews() {
+            api.get(`/posts/${post_id}`)
+            .then((resp) => {
+                setViews(resp.data.views)
+            })
+        } GetViews()
+    })
+
     return (
         <div className="actions-main">
                 <input type="image" src={view} alt="view"/>
-                <span className="main-span">{views}</span>
+                <span className="main-span">{Views}</span>
         </div>
     )
 }
