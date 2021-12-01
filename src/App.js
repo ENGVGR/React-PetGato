@@ -9,7 +9,7 @@ import Profile from "./pages/profile";
 import Posts from "./pages/posts";
 import Post from './pages/specificPost/index'
 import  UserContext  from "./components/usecontext";
-import { useContext, useState } from "react";
+import { useState } from "react";
 
 function App() {
 

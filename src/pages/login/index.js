@@ -15,7 +15,7 @@ function Login () {
     const [Password, setPassword] = useState()
     const [Error, setError] = useState(false)
     const navigate = useNavigate();
-    const {user, setUser} = useContext(UserContext)
+    const {setUser} = useContext(UserContext)
 
     function handleSubmit(event) {
         event.preventDefault()
@@ -30,6 +30,7 @@ function Login () {
             .then((resp) => {
                 sessionStorage.setItem('token', resp.data.auth_token);
                 sessionStorage.setItem('id', resp.data.user_id)
+                sessionStorage.setItem('admin', resp.data.is_Admin)
                 setUser(resp.data.user_id)
                 setError(false)
                 navigate('/')

@@ -15,16 +15,21 @@ import UserContext from "../../components/usecontext"
 export default function Posts() {
 
     const {user} = useContext(UserContext)
+    const Admin = sessionStorage.getItem('admin')
+    
 
     const paramsNavbar = {
         text_1: "Página Inicial",
         link_1: "/",
-        text_2: "Sobre Nós",
+        text_2: Admin===true?"Publicações":"Sobre Nós",
         link_2: "/",
-        text_3: "Fale Conosco",
+        text_3: Admin===true?"Usuários":"Fale Conosco",
         link_3: "/",
-        text_4: user?"Minha Conta":"Entrar",
-        link_4: user?"/perfil":"/login",
+        text_4: Admin===true?"Denúncias":user!==""?"Minha Conta":"Entrar",
+        link_4: user!==""?"/perfil":"/login",
+        text_5: user!==""?"Sair":"",
+        text_6: Admin===true?"Mensagens":"",
+        link_6: Admin===true?"/":"",
         emphasis_t1: true
     }
 
