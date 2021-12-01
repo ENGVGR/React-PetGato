@@ -10,6 +10,7 @@ import Posts from "./pages/posts";
 import Post from './pages/specificPost/index'
 import  UserContext  from "./components/usecontext";
 import { useState } from "react";
+import { CreatePost } from "./pages/createPost";
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/recuperar-senha/:id/:token" element={<ResetPassword/>}/>
           <Route path="/perfil" element={<Profile/>}/>  
           <Route path="/post/:post_id" element={<Post/>}/>
+          <Route path="/create-post" element={<CreatePost/>}/>
         </Routes>
       </Router>
     </UserContext.Provider>
