@@ -8,6 +8,7 @@ import { ButtonWhite } from "../../components/button"
 import { BottomPage } from "../../components/bottompage/index"
 import { useState } from "react"
 import api from '../../api/api';
+import avatarNeutro from '../../assets/avatar_neutro.png'
 
 export default function Profile() {
 
@@ -17,6 +18,8 @@ export default function Profile() {
     const [Password, setPassword] = useState()
     const [NewPassword, setNewPassword] = useState("")
     const [NewPasswordConfirm, setNewPasswordConfirm] = useState("")
+    const [Avatar, setAvatar] = useState({})
+    const [SendAvatar, setSendAvatar] = useState({})
     const [ErrorLogin, setErrorLogin] = useState(false)
     const [ErrorNewPassword, setErrorNewPassword] = useState(false)
     const [Confirmation, setConfirmation] = useState(false)
@@ -26,10 +29,12 @@ export default function Profile() {
         async function Get() {
             api.get(`users/${id}`, headers)
             .then((resp) => {
+                console.log(resp)
                 const Data = resp.data
                 if (Data) {
                     setName(Data.name)
                     setEmail(Data.email)      
+                    setAvatar(Data.avatar)
                 }        
             })
             .catch((err) => {
@@ -42,8 +47,9 @@ export default function Profile() {
     function handleSubmit(event) {
         event.preventDefault()
 
+        console.log("avatar", foto)
+
         NewPassword===NewPasswordConfirm?setErrorNewPassword(false):setErrorNewPassword(true)
-        console.log(NewPassword)
 
         async function Update() {  
 
@@ -56,17 +62,20 @@ export default function Profile() {
 
                     api.post('users/login/', Data)
                     .then(() => {
-                        const Data_2 = {
-                            name: Name,
-                            email: Email,
-                            password: NewPassword,
-                            password_confirmation: NewPasswordConfirm
-                        }
+
+                        const Data_2 = new FormData()
+                        Data_2.append('name', Name)
+                        Data_2.append("email", Email)
+                        Data_2.append("password", NewPassword)
+                        Data_2.append('password_confirmation', NewPasswordConfirm)
+                        Data_2.append('avatar', SendAvatar, SendAvatar.name)
+
                         api.patch(`users/${id}`, Data_2, headers)
                         .then(() => {
                             setConfirmation(true)
                             setErrorLogin(false)
                             setErrorNewPassword(false)
+                            setFirst(true)
                         })                   
                     })
                     .catch(() => {
@@ -82,16 +91,19 @@ export default function Profile() {
 
                     api.post('users/login/', Data)
                     .then(() => {
-                        const Data_2 = {
-                            name: Name,
-                            email: Email,
-                            password: Password
-                        }
+
+                        const Data_2 = new FormData()
+                        Data_2.append('name', Name)
+                        Data_2.append("email", Email)
+                        Data_2.append("password", Password)
+                        Data_2.append('avatar', SendAvatar, SendAvatar.name)
+
                         api.patch(`users/${id}`, Data_2, headers)
                         .then(() => {
                             setConfirmation(true)
                             setErrorLogin(false)
                             setErrorNewPassword(false)
+                            setFirst(true)
                         })         
                     })
                     .catch(() => {
@@ -108,8 +120,9 @@ export default function Profile() {
             <NavBar props={paramsNavbar}/>
             <div className="profile-div">
                 <div className="profile-photo-div">
-                    <img className="profile-photo" src={foto} alt="foto-de-perfil"/>
-                    <Link className="profile-photo-link" to="/"><img className="profile-photo-icon" src={camera} alt="camera"/>Alterar foto de perfil</Link>
+                    {Avatar?<img className="profile-photo" src={Avatar} alt="foto-de-perfil"/>:<img className="profile-photo" src={avatarNeutro} alt="foto-de-perfil"/>}
+                    <label htmlFor="file" className="profile-photo-link "><img src={camera} alt="camera" className="profile-photo-icon"/>Alterar foto de perfil</label>
+                    <input id="file" style={{visibility:"hidden"}} type="file" accept="image/*" onChange={(event) => {setSendAvatar(event.target.files[0])}}/>
                 </div>
                 <div className="profile-form-div">
                     <div className="profile-title-div">
