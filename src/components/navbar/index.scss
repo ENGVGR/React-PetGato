@@ -48,4 +48,7 @@
     background-color: #BA66A3;
     border: none;
     opacity: 0.8;
+    &:hover {
+        cursor: pointer;
+    }
 }
