@@ -10,7 +10,7 @@ import { ButtonWhite } from "../../components/button"
 import { BottomPage } from "../../components/bottompage"
 import { PopularPublication } from "../../components/popularpublication"
 import { useContext } from "react"
-import UserContext from "../../components/usecontext"
+import UserContext from "../../components/useContext/userContext.js"
 
 export default function Posts() {
 

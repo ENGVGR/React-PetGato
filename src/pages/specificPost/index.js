@@ -12,7 +12,7 @@ import { BottomPage } from '../../components/bottompage'
 import { useParams } from 'react-router'
 import { useContext, useEffect, useState } from 'react'
 import api from '../../api/api'
-import UserContext from '../../components/usecontext'
+import UserContext from '../../components/useContext/userContext.js'
 
 export default function SpecificPost({props}) {
 
