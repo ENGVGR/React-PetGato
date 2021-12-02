@@ -9,13 +9,15 @@ import { PreviewPost } from "../../components/previewpost"
 import { ButtonWhite } from "../../components/button"
 import { BottomPage } from "../../components/bottompage"
 import { PopularPublication } from "../../components/popularpublication"
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import UserContext from "../../components/useContext/userContext.js"
+import api from "../../api/api"
 
 export default function Posts() {
 
     const {user, setUser} = useContext(UserContext)
     const Admin = sessionStorage.getItem('admin')
+    const [IdList, setIdList] = useState([])
 
     if (!user || !Admin) {
         setUser("")
@@ -36,6 +38,16 @@ export default function Posts() {
         link_6: Admin!== "null"&Admin!==""?"/":"",
         emphasis_t1: true
     }
+
+    useEffect(() => {
+        
+        async function GetViews() {
+            api.get(`/posts`)
+            .then((resp) => {
+                setIdList(resp.data)
+            })
+        } GetViews()        
+    },[])
 
     return (
         <div className="posts-body">
@@ -70,11 +82,7 @@ export default function Posts() {
                         <span className="title-span-2">Seja bem-vinda(o) ao blog PetGatô! Confira nosso conteúdo mais recente:</span>
                     </div>
                     <div className="main-right__posts">
-                        <PreviewPost props={ParamsPost} user_id={sessionStorage.getItem('id')} post_id={8}/>
-                        <PreviewPost props={ParamsPost} user_id={sessionStorage.getItem('id')} post_id={8}/>
-                        <PreviewPost props={ParamsPost} user_id={sessionStorage.getItem('id')} post_id={8}/>
-                        <PreviewPost props={ParamsPost} user_id={sessionStorage.getItem('id')} post_id={8}/>
-                        <PreviewPost props={ParamsPost} user_id={sessionStorage.getItem('id')} post_id={8}/>
+                        {IdList.map((e) => {return (<PreviewPost user_id={sessionStorage.getItem('id')} post_id={e.id}/>)})}
                     </div>
                     <div className="main-right__button">
                         <ButtonWhite className="button-white">PUBLICAÇÕES ANTERIORES</ButtonWhite>
