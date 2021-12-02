@@ -127,7 +127,7 @@ export function CreatePost() {
                         {Tags.map((e) => {return (<div className="createPost__form-tags__tag"><input id={e.id} type="checkbox" onClick={(event)=>{AddChecked(event.target.checked,e.name)}}/><label htmlFor={e.id} className="createPost__form-tags__tag-label">{e.name}</label></div>)})}
                     </div>
                     <div className="createPost__form-tagsButton">
-                        <ButtonWhite className="createPost__form-tagsButton__button" >GERENCIAR TAGS</ButtonWhite>
+                        <ButtonWhite className="createPost__form-tagsButton__button" type="button">GERENCIAR TAGS</ButtonWhite>
                     </div>
                     <div className="createPost__form-buttons">
                         <div className="createPost__form-buttons__send">                        
@@ -137,7 +137,7 @@ export function CreatePost() {
                             {Confimation?<span className="createPost__form-buttons__send-create">Post criado!</span>:<></>}                                         
                         </div>
                         <>
-                            <Link to="/"><ButtonWhite>VOLTAR</ButtonWhite></Link>
+                            <Link to="/"><ButtonWhite type="button">VOLTAR</ButtonWhite></Link>
                         </>
                     </div>
                 </form>
