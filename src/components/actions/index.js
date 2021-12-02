@@ -34,7 +34,7 @@ const Like = ({user_id, post_id}) => {
             .then((resp) => {     
                 setLikes(resp.data)
             })
-        } GetLikes()
+        } if (user_id & post_id) {GetLikes()}
 
         async function GetLike() {
             api.get(`/post/${user_id}/${post_id}`)
@@ -46,7 +46,7 @@ const Like = ({user_id, post_id}) => {
                     setClick(false)
                 }
             })
-        } if (user_id) {GetLike()}
+        } if (user_id & post_id) {GetLike()}
     })
 
     return (
@@ -77,7 +77,7 @@ const Views = ({post_id}) => {
             .then((resp) => {
                 setViews(resp.data.views)
             })
-        } GetViews()
+        } if (post_id){ GetViews() }
     })
 
     return (
