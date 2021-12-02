@@ -61,12 +61,12 @@
             }
             &__content {
                 min-width: 100%;
-                min-height: 100vh;
+                margin-top: 3%;
                 &-text {
                     min-width: 99%;
                     font-size: 1.2em;
                     opacity: 0.6;
-                    min-height: 172vh;
+                    min-height: 110vh;
                     resize: none;
                     background-color: white;
                     border: none;

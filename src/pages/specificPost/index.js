@@ -23,6 +23,7 @@ export default function SpecificPost({props}) {
     const [First, setFirst] = useState(true)
     const {user} = useContext(UserContext)
     const Admin = sessionStorage.getItem('admin')
+    const [Banner, setBanner] = useState()
 
     const paramsNavbar = {
         text_1: "Página Inicial",
@@ -46,19 +47,16 @@ export default function SpecificPost({props}) {
             .then((resp) => {
                 setViews(resp.data.views)
                 setTitle(resp.data.title)
-                setContent(resp.data.content)     
+                setContent(resp.data.content)  
+                setBanner(resp.data.banner_image)
+                if (First ) {
+                    const Data = {views: Views + 1}
+                    api.patch(`/posts/${post_id}`, Data)                   
+                }
             })
         } GetViews()
 
-        async function PostViews() {
-            const Data = {views: Views + 1}
-
-            api.patch(`/posts/${post_id}`, Data)
-            
-        } if (First & Views !== 0) {
-            PostViews()
-            setFirst(false)
-        }
+ 
         
     },[First, Views, post_id])
 
@@ -77,10 +75,10 @@ export default function SpecificPost({props}) {
                         <span className="specificPostLeft__subTitle-text">Publicado em 08 de outubro de 2019 às 09h28</span>
                         <div className="specificPostLeft__subTitle-views">
                             <img className="specificPostLeft__subTitle-views__image" src={views} alt="views"/>
-                            <span className="specificPostLeft__subTitle-views__number">{Views}</span>
+                            <span className="specificPostLeft__subTitle-views__number">{Views + 1}</span>
                         </div>
                     </div>
-                    <img className="specificPostLeft__banner" src={banner} alt="banner"/>
+                    <img className="specificPostLeft__banner" src={Banner} alt="banner"/>
                     <div className="specificPostLeft__content">
                         <textarea className="specificPostLeft__content-text" value={Content} disabled/>
                     </div>
