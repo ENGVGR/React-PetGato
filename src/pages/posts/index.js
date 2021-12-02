@@ -70,11 +70,11 @@ export default function Posts() {
                         <span className="title-span-2">Seja bem-vinda(o) ao blog PetGatô! Confira nosso conteúdo mais recente:</span>
                     </div>
                     <div className="main-right__posts">
-                        <PreviewPost props={ParamsPost} user_id={sessionStorage.getItem('id')} post_id={3}/>
-                        <PreviewPost props={ParamsPost} user_id={sessionStorage.getItem('id')} post_id={3}/>
-                        <PreviewPost props={ParamsPost} user_id={sessionStorage.getItem('id')} post_id={3}/>
-                        <PreviewPost props={ParamsPost} user_id={sessionStorage.getItem('id')} post_id={3}/>
-                        <PreviewPost props={ParamsPost} user_id={sessionStorage.getItem('id')} post_id={3}/>
+                        <PreviewPost props={ParamsPost} user_id={sessionStorage.getItem('id')} post_id={8}/>
+                        <PreviewPost props={ParamsPost} user_id={sessionStorage.getItem('id')} post_id={8}/>
+                        <PreviewPost props={ParamsPost} user_id={sessionStorage.getItem('id')} post_id={8}/>
+                        <PreviewPost props={ParamsPost} user_id={sessionStorage.getItem('id')} post_id={8}/>
+                        <PreviewPost props={ParamsPost} user_id={sessionStorage.getItem('id')} post_id={8}/>
                     </div>
                     <div className="main-right__button">
                         <ButtonWhite className="button-white">PUBLICAÇÕES ANTERIORES</ButtonWhite>

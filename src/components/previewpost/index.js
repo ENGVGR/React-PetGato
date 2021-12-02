@@ -15,7 +15,7 @@ const PreviewPost = ({props, user_id, post_id}) => {
                 </div>
                 
                 <div className="main-title">
-                    <Link className="link" to="/post/3">
+                    <Link className="link" to={{pathname: `/post/${post_id}`}}>
                         <span className="main-title__span">{props.title}</span>
                     </Link>
                 </div>

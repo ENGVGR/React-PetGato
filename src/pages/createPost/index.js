@@ -17,7 +17,7 @@ var TagsList = []
 export function CreatePost() {
 
     const {user} = useContext(UserContext)
-    const {Content} = useContext(ContentContext)
+    const {Content,setContent} = useContext(ContentContext)
     const Admin = sessionStorage.getItem('admin')
     const [Title, setTitle] = useState('')
     const [Banner, setBanner] = useState()
@@ -38,7 +38,7 @@ export function CreatePost() {
         text_5: user!==""?"Sair":"",
         text_6: Admin!== "null"&Admin!==""?"Mensagens":"",
         link_6: Admin!== "null"&Admin!==""?"/":"",
-        emphasis_t1: true
+        emphasis_t2: true
     }
     
     function AddChecked(status,name) {
@@ -64,6 +64,8 @@ export function CreatePost() {
             .then((resp) => {
                 console.log(resp)
                 setConfirmation(true)
+                setTitle('')
+                setContent('')
             })
             .catch((err) => {
                 console.log(err)
