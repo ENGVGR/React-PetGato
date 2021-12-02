@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import ReactQuill from "react-quill"; // yarn add react-quill
 import "react-quill/dist/quill.snow.css";
+import ContentContext from "../useContext/contentContext";
 import './index.scss'
 
 const colors = [ 
@@ -87,22 +88,19 @@ const formats = [
   "formula"
 ];
 
-function Editor() {
+export default function Editor() {
 
-  const state = {
-    text: ""
-  };
-
+  const {Content, setContent} = useContext(ContentContext)
+  
     return (
       <>
         <ReactQuill
           theme="snow"
-          value={state.text}
+          value={Content}
           modules={modules}
           formats={formats}
+          onChange={setContent}
         />        
       </>
     )
 }
-
-export default Editor;
