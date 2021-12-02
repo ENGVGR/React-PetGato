@@ -79,14 +79,29 @@
                 &__button {
                     width: 23%;
                 }
-            }
-            &-bottom {
-                margin-top: 2%;
+            }     
+            &-buttons {
+                display: flex;
                 margin-bottom: 5%;
-                &__button {
-                    margin-right: 5%;
+                &__send {
+                    margin-right: 3%;
+                    &-error {
+                        margin-top: 2%;
+                        color: red;
+                        font-size: 1em;
+                        display: block;
+                    }
+                    &-create {
+                        margin-top: 2%;
+                        color: blue;
+                        font-size: 1em;
+                        display: block;
+                    }
                 }
-            }
+            }      
+        }
+        &__back {
+            margin-bottom: 5%;
         }
         
     }

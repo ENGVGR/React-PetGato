@@ -2,14 +2,13 @@ import logo from "../../assets/gatinho_petgato_branco.svg"
 import "./index.scss"
 import { Link } from "react-router-dom"
 import { useContext } from "react"
-import UserContext from "../usecontext"
+import UserContext from "../useContext/userContext.js"
 import { useNavigate } from "react-router";
 
 const NavBar = ({props}) => {
 
     const {user, setUser} = useContext(UserContext)
     const navigate = useNavigate();
-    console.log(user)
 
     function Logout() {
         sessionStorage.setItem('id', "")

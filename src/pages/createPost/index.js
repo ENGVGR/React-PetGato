@@ -1,19 +1,30 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
+import api from '../../api/api'
 import { Like, Message, Views } from '../../components/actions'
 import { BottomPage } from '../../components/bottompage'
 import { ButtonWhite } from '../../components/button'
 import Editor from '../../components/editor/index.js'
-import { InputCreatePost, Label, LabelCreatePost } from '../../components/input'
+import { InputCreatePost, LabelCreatePost } from '../../components/input'
 import { NavBar } from '../../components/navbar'
-import UserContext from '../../components/usecontext'
+import ContentContext from '../../components/useContext/contentContext'
+import UserContext from '../../components/useContext/userContext.js'
 import './index.scss'
+
+var CheckedList = {base: false}
+var TagsList = []
 
 export function CreatePost() {
 
     const {user} = useContext(UserContext)
+    const {Content} = useContext(ContentContext)
     const Admin = sessionStorage.getItem('admin')
-    console.log(user, Admin)
+    const [Title, setTitle] = useState('')
+    const [Banner, setBanner] = useState()
+    const [Confimation, setConfirmation] = useState(false)
+    const [ErrorContent, setErrorContent] = useState(false)
+    const [ErrorImage, setErrorImage] = useState(false)
+    const headers = {headers: {Authorization: sessionStorage.getItem('token')}}
 
     const paramsNavbar = {
         text_1: "Página Inicial",
@@ -29,6 +40,49 @@ export function CreatePost() {
         link_6: Admin!== "null"&Admin!==""?"/":"",
         emphasis_t1: true
     }
+    
+    function AddChecked(status,name) {
+        CheckedList[name] = status
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault()
+        for (var name in CheckedList){
+            if(CheckedList[name] === true & TagsList.indexOf(name) === -1) {
+                TagsList.push(name)
+            }
+        }
+
+        async function SendPost() {
+
+            const Data = new FormData()
+            Data.append('title', Title)
+            Data.append('banner_image', Banner, Banner.name)
+            Data.append('content', Content)
+            Data.append('views', 0)
+            api.post(`/posts`, Data, headers)
+            .then((resp) => {
+                console.log(resp)
+                setConfirmation(true)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+        } 
+        if (Banner){
+            setErrorImage(false)
+            if (Content !== '') {
+                SendPost()
+                setErrorContent(false)
+            }
+            else {
+                setErrorContent(true)
+            }
+        }
+        else {
+            setErrorImage(true)
+        }
+    }
 
     return (
         <div className="body-createPost">
@@ -40,11 +94,11 @@ export function CreatePost() {
                 <div className="createPost__subTitle">
                     <span className="createPost__subTitle-span">Criar Publicação</span>
                 </div>
-                <form className="createPost__form">
+                <form onSubmit={handleSubmit} className="createPost__form">
                     <div className="createPost__form-head">
                         <div className="createPost__form-head__title">
                             <LabelCreatePost>Título da Publicação</LabelCreatePost>
-                            <InputCreatePost/>
+                            <InputCreatePost value={Title} onChange={(e) => {setTitle(e.target.value)}} required/>
                         </div>
                         <div className="createPost__form-head__actions">
                             <Like/>
@@ -63,21 +117,28 @@ export function CreatePost() {
                         <LabelCreatePost>Escolha uma imagem de capa:</LabelCreatePost>
                     </div>  
                     <div className="createPost__form-image">
-                        <label htmlFor="file" className="createPost__form-image__label"><span className="createPost__form-image__label-span">Escolher arquivo</span>  Nenhum arquivo escolhido</label>
-                        <input id="file" type="file" accept="image/*" className="createPost__form-image__input"/>
+                        <label htmlFor="file" className="createPost__form-image__label"><span className="createPost__form-image__label-span">Escolher arquivo</span>{Banner?Banner.name:"Nenhum arquivo escolhido"}</label>
+                        <input id="file" type="file" accept="image/*" className="createPost__form-image__input" onChange={(e) => {setBanner(e.target.files[0])}}/>
                     </div>
                     <div className="createPost__form-tagsTitle">
                         <LabelCreatePost>Escolha pelo menos uma tag:</LabelCreatePost>
                     </div>
                     <div className="createPost__form-tags">                        
-                        {Tags.map((e) => {return (<div className="createPost__form-tags__tag"><input id={e.id} type="checkbox"/><label htmlFor={e.id} className="createPost__form-tags__tag-label">{e.name}</label></div>)})}
+                        {Tags.map((e) => {return (<div className="createPost__form-tags__tag"><input id={e.id} type="checkbox" onClick={(event)=>{AddChecked(event.target.checked,e.name)}}/><label htmlFor={e.id} className="createPost__form-tags__tag-label">{e.name}</label></div>)})}
                     </div>
                     <div className="createPost__form-tagsButton">
                         <ButtonWhite className="createPost__form-tagsButton__button" >GERENCIAR TAGS</ButtonWhite>
                     </div>
-                    <div className="createPost__form-bottom">
-                        <ButtonWhite className="createPost__form-bottom__button">PUBLICAR</ButtonWhite>
-                        <Link to="/"><ButtonWhite>VOLTAR</ButtonWhite></Link>
+                    <div className="createPost__form-buttons">
+                        <div className="createPost__form-buttons__send">                        
+                            <ButtonWhite className="createPost__form-buttons__send-button">PUBLICAR</ButtonWhite>  
+                            {ErrorContent?<span className="createPost__form-buttons__send-error">É necessário conteúdo para o post!</span>:<></>}
+                            {ErrorImage?<span className="createPost__form-buttons__send-error">É necessário uma imagem!</span>:<></>}    
+                            {Confimation?<span className="createPost__form-buttons__send-create">Post criado!</span>:<></>}                                         
+                        </div>
+                        <>
+                            <Link to="/"><ButtonWhite>VOLTAR</ButtonWhite></Link>
+                        </>
                     </div>
                 </form>
             </div>
