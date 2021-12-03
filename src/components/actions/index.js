@@ -57,7 +57,7 @@ const Like = ({user_id, post_id, message=false}) => {
     return (
         <div className="actions-main">
             <input type="image" src={Click?like_red:like} alt="like" onClick={() => {PostLike(user_id,post_id)}}/>
-            <span className="main-span">{Click?'Você e mais ':''}{Likes}{message?" " + message:''}</span>
+            <span className="main-span">{message!==false&Click===true?'Você e outras ':''}{Likes}{message?" " + message:''}</span>
         </div>
     )
 }
