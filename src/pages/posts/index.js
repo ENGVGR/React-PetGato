@@ -35,7 +35,7 @@ export default function Posts() {
         link_4: user!==""?"/perfil":"/login",
         text_5: user!==""?"Sair":"",
         text_6: Admin!== "null"&Admin!==""?"Mensagens":"",
-        link_6: Admin!== "null"&Admin!==""?"/":"",
+        link_6: Admin!== "null"&Admin!==""?"/":"/",
         emphasis_t1: true
     }
 
@@ -92,15 +92,6 @@ export default function Posts() {
             <BottomPage/>
         </div>
     )
-}
-
-const ParamsPost = {
-    photo: photo_post,
-    tags: ["cuidados", "Cães & Gatos", "Guias"],
-    title: "As almofadas são importantes: guia definitivo de cuidados com as patas",
-    message: "São 3 da tarde e você já pega a coleira para passear com seu companheiro de caminhada. Tá aquele sol do cão e o asfalto parece que dá pra fritarum ovo. Se dá pra fazer uma fritura, imagina o que isso pode fazer com apatinha do seu pet? Essa é só uma das situações",
-    messages: "4",
-    views: "88"
 }
 
 const paramsPublication = {
