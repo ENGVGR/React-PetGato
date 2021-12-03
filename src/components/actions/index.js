@@ -6,7 +6,7 @@ import "./index.scss"
 import { useEffect, useState } from "react"
 import api from "../../api/api"
 
-const Like = ({user_id, post_id}) => {
+const Like = ({user_id, post_id, message=false}) => {
 
     const [Click,setClick] = useState(false)
     const [Likes,setLikes] = useState(0)
@@ -34,11 +34,8 @@ const Like = ({user_id, post_id}) => {
             .then((resp) => {     
                 setLikes(resp.data)
             })
-        } if (user_id) {
-            if (post_id) {
-                GetLikes()
-            }
-        }
+        } if (post_id) {GetLikes()}
+        
 
         async function GetLike() {
             api.get(`/post/${user_id}/${post_id}`)
@@ -60,7 +57,7 @@ const Like = ({user_id, post_id}) => {
     return (
         <div className="actions-main">
             <input type="image" src={Click?like_red:like} alt="like" onClick={() => {PostLike(user_id,post_id)}}/>
-            <span className="main-span">{Likes}</span>
+            <span className="main-span">{Click?'Você e mais ':''}{Likes}{message?" " + message:''}</span>
         </div>
     )
 }
