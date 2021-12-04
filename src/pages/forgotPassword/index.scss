@@ -1,38 +1,4 @@
-.forgot-password-div {
-    width: auto;
-    min-height:100vh;
-    display: flex;
-}
-
-.forgot-password-image {
-    width:50%;
-    object-fit: cover;
-}
-
-.forgot-password-div-form {
-    width: 50%;
-    text-align: center;
-    background-color: #FBE9F6;
-    padding-top: 8em;
-}
-
-.forgot-password-span-message {
-    display: block;
-    margin-top: 0.5em;
-    margin-bottom: 0.8em;
-    font-size: 0.9em;
-    color: grey;
-}
-
-.forgot-password-div-bottom {
-    display: flex;
-    margin: auto;
-    width: 100%;
-    justify-content: center;
-    margin-top: 2em;
-}
-
-.forgot-password-div-bottom-2 {
+@mixin forgotPassword__div {
     display: flex;
     margin: auto;
     width: 100%;
@@ -40,14 +6,14 @@
     margin-top: 0.2em;
 }
 
-.forgot-password-span-ask {
+@mixin forgotPassword__span {
     font-size: 1.3em;
     opacity: 0.4;
     width: auto;
     margin-right: 6px;
 }
 
-.forgot-password-link {
+@mixin forgotPassword__link {
     color: #BA66A3;
     font-size: 1.3em;
     font-weight: bold;
@@ -59,8 +25,62 @@
     }
 }
 
-.forgot-password-span-error {
-    color: red;
-    font-size: 0.8em;
-    display: block;
+.forgotPassword {
+    width: auto;
+    min-height:100vh;
+    display: flex;
+    &__image {
+        width:50%;
+        object-fit: cover;
+    }
+    &__form {
+        width: 50%;
+        text-align: center;
+        background-color: #FBE9F6;
+        padding-top: 8em;
+        &-error {
+            color: red;
+            font-size: 0.8em;
+            display: block;
+        }
+        &-message {
+            display: block;
+            margin-top: 0.5em;
+            margin-bottom: 0.8em;
+            font-size: 0.9em;
+            color: grey;
+        }
+        &-confirmation {
+            color: blue;
+            font-size: 0.8em;
+            display: block;
+        }
+        &-login {
+            @include forgotPassword__div;
+            &__span {
+                @include forgotPassword__span;
+            }
+            &__link {
+                @include forgotPassword__link;
+            }
+        }
+        &-register {
+            @include forgotPassword__div;
+            &__span {
+                @include forgotPassword__span;
+            }
+            &__link {
+                @include forgotPassword__link;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .forgotPassword__image {
+        display: none;
+    }
+    .forgotPassword__form {
+        width: 100%;
+    }
 }

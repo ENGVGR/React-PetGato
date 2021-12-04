@@ -1,20 +1,25 @@
+//SCSS
 import './index.scss'
-import Foto_Esqueci_Minha_Senha from '../../assets/Esqueci minha senha.jpg'
+//React
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
+//Components
 import { Logo } from '../../components/logo'
 import { Input, Label } from '../../components/input'
 import { ButtonPurple } from '../../components/button'
-import { useState } from 'react'
+//Assets
+import Foto_Esqueci_Minha_Senha from '../../assets/Esqueci minha senha.jpg'
+//Api
 import api from '../../api/api';
 
-function ForgotPassword() {
+export default function ForgotPassword() {
 
     const [Email, setEmail] = useState()
     const [Error, setError] = useState(false)
     const [Confirmation, setConfirmation] = useState(false)
 
-    function handleSubmit(event) {
-        event.preventDefault()
+    function handleSubmit(e) {
+        e.preventDefault()
 
         async function post() {
             const Data = {
@@ -22,42 +27,37 @@ function ForgotPassword() {
             }
 
             api.post('users/recuperar-senha/', Data)
-            .then((resp) => {
+            .then(() => {
                 setConfirmation(true)
                 setError(false)
             })
-            .catch((err) => {
+            .catch(() => {
                 setError(true)
             })
-        }
-            post()
+        }post()
     }
 
     return(
-
-        <div className="forgot-password-div">
-            <img className="forgot-password-image" src={Foto_Esqueci_Minha_Senha} alt="foto"/>
-            <div className="forgot-password-div-form">
+        <div className="forgotPassword">
+            <img className="forgotPassword__image" src={Foto_Esqueci_Minha_Senha} alt="foto"/>
+            <div className="forgotPassword__form">
                 <Logo/>
                 <form onSubmit={handleSubmit}>
                     <Label htmlFor="name">Email</Label>
                     <Input type="email" required value={Email} onChange={(event)=>(setEmail(event.target.value))}/>
-                    <Label>{Error?<span className="forgot-password-span-error"> *Email incorreto</span>:<span className="forgot-password-span-message">Insira seu email para recuperar a senha</span>}</Label>
-                    {Confirmation?<span className="forgot-password-span-error"> *Link para alteração de senha enviado para o email informado!</span>:<></>}
-                    <ButtonPurple>RECUPERAR SENHA</ButtonPurple>
-                    
+                    <Label>{Error?<span className="forgotPassword__form-error"> *Email incorreto</span>:<span className="forgotPassword__form-message">Insira seu email para recuperar a senha</span>}</Label>
+                    {Confirmation?<span className="forgotPassword__form-confirmation"> *Link para alteração de senha enviado para o email informado!</span>:<></>}
+                    <ButtonPurple>RECUPERAR SENHA</ButtonPurple>                   
                 </form>
-                <div className="forgot-password-div-bottom">
-                    <span className="forgot-password-span-ask">Lembrou a senha?</span> 
-                    <Link className="forgot-password-link" to="/login">Faça login</Link>
+                <div className="forgotPassword__form-login">
+                    <span className="forgotPassword__form-login__span">Lembrou a senha?</span> 
+                    <Link className="forgotPassword__form-login__link" to="/login">Faça login</Link>
                 </div>
-                <div className="forgot-password-div-bottom-2">
-                    <span className="forgot-password-span-ask">Ainda não tem conta?</span> 
-                    <Link className="forgot-password-link" to="/registro">Cadastre-se aqui</Link>
+                <div className="forgotPassword__form-register">
+                    <span className="forgotPassword__form-register__span">Ainda não tem conta?</span> 
+                    <Link className="forgotPassword__form-register__link" to="/registro">Cadastre-se aqui</Link>
                 </div>
             </div>
         </div>
     )
 }
-
-export default ForgotPassword
