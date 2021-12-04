@@ -24,6 +24,12 @@ export default function SpecificPost({props}) {
     const {user} = useContext(UserContext)
     const Admin = sessionStorage.getItem('admin')
     const [Banner, setBanner] = useState()
+    const [Comment, setComment] = useState('')
+    const headers = {headers: {Authorization: sessionStorage.getItem('token')}}
+    const [CommentList, setCommentList] = useState('')
+    const [name, setName] = useState('')
+    const [Avatar, setAvatar] = useState('')
+    const [Mudou, setMudou] = useState(false)
 
     const paramsNavbar = {
         text_1: "Página Inicial",
@@ -54,11 +60,35 @@ export default function SpecificPost({props}) {
                     api.patch(`/posts/${post_id}`, Data)                   
                 }
             })
-        } GetViews()
-
- 
-        
+        } GetViews()        
     },[First, Views, post_id])
+
+    useEffect(() => {
+        
+        async function GetComments() {
+            api.get(`/comments/${post_id}`)
+            .then((resp) => {
+                const List = resp.data
+                if (resp) {
+                    setCommentList(List)
+                }
+            })
+        } if (post_id) {GetComments()}
+
+    },[post_id, Comment])
+
+    function handleSubmit(e) {
+        e.preventDefault()
+
+        const Data = {
+            description: Comment
+        }
+        api.post(`/comments/${user}/${post_id}`, Data, headers)
+        .then(() => {
+            setComment('')
+        })
+        
+    }
 
     return (
         <div className="body-specificPost">
@@ -103,32 +133,21 @@ export default function SpecificPost({props}) {
             </div>
             <div className="especificPostBottom">
                 <div>
-                    <Like user_id={sessionStorage.getItem('id')} post_id={post_id}/>
+                    <Like user_id={sessionStorage.getItem('id')} post_id={post_id} message="Curtiram essa publicação"/>
                 </div>
                 <div className="especificPostBottom__comment">
                     <div className="especificPostBottom__comment-label">
                         <label htmlFor="comment" className="especificPostBottom__comment-label__text">Gostou? Deixe um comentário abaixo:</label>
                     </div>
-                    <textarea id="comment" className="especificPostBottom__comment-text" rows="5" cols="86" placeholder="Solta o verbo, meu consagrado..."/>
-                    <div className="especificPostBottom__comment-button">
-                        <ButtonWhite>Enviar</ButtonWhite>
-                    </div>
+                    <form onSubmit={handleSubmit}>
+                        <textarea id="comment" className="especificPostBottom__comment-text" rows="5" cols="86" placeholder="Solta o verbo, meu consagrado..." value={Comment} onChange={(e) => {setComment(e.target.value)}}/>
+                        <div className="especificPostBottom__comment-button">
+                            <ButtonWhite>Enviar</ButtonWhite>
+                        </div>
+                    </form>
                 </div>
                 <div className="especificPostBottom__postComment">
-                    <UserComment props={paramsUserComment}/>
-                    <div className="especificPostBottom__postComment-resp">
-                        <RespUserComment props={paramsUserComment}/>
-                        <RespUserComment props={paramsUserComment}/>
-                        <ButtonWhite className="especificPostBottom__postComment-resp__button">RESPONDER</ButtonWhite>
-                    </div>        
-                </div>
-                <div className="especificPostBottom__postComment">
-                    <UserComment props={paramsUserComment}/>
-                    <div className="especificPostBottom__postComment-resp">
-                        <RespUserComment props={paramsUserComment}/>
-                        <RespUserComment props={paramsUserComment}/>
-                        <ButtonWhite className="especificPostBottom__postComment-resp__button">RESPONDER</ButtonWhite>
-                    </div>        
+                    {CommentList!==''?CommentList.map((e) => {return(<UserComment Comment={e.description} date={e.created_at} User_id={e.user_id}/>)}):<></>}      
                 </div>
             </div>
             <div className="bottom">
