@@ -12,7 +12,6 @@ import { PopularPublication } from "../../components/popularpublication"
 
 export default function Posts() {
 
-    
     return (
         <div className="posts-body">
             <NavBar props={paramsNavbar}/>
@@ -46,11 +45,11 @@ export default function Posts() {
                         <span className="title-span-2">Seja bem-vinda(o) ao blog PetGatô! Confira nosso conteúdo mais recente:</span>
                     </div>
                     <div className="main-right__posts">
-                        <PreviewPost props={paramsPost}/>
-                        <PreviewPost props={paramsPost}/>
-                        <PreviewPost props={paramsPost}/>
-                        <PreviewPost props={paramsPost}/>
-                        <PreviewPost props={paramsPost}/>
+                        <PreviewPost props={ParamsPost} user_id={sessionStorage.getItem('id')} post_id={3}/>
+                        <PreviewPost props={ParamsPost} user_id={sessionStorage.getItem('id')} post_id={3}/>
+                        <PreviewPost props={ParamsPost} user_id={sessionStorage.getItem('id')} post_id={3}/>
+                        <PreviewPost props={ParamsPost} user_id={sessionStorage.getItem('id')} post_id={3}/>
+                        <PreviewPost props={ParamsPost} user_id={sessionStorage.getItem('id')} post_id={3}/>
                     </div>
                     <div className="main-right__button">
                         <ButtonWhite className="button-white">PUBLICAÇÕES ANTERIORES</ButtonWhite>
@@ -62,6 +61,8 @@ export default function Posts() {
     )
 }
 
+const user_id = sessionStorage.getItem('id')
+
 const paramsNavbar = {
     text_1: "Página Inicial",
     link_1: "/",
@@ -69,17 +70,16 @@ const paramsNavbar = {
     link_2: "/",
     text_3: "Fale Conosco",
     link_3: "/",
-    text_4: "Entrar",
-    link_4: "/login",
+    text_4: user_id?"Perfil":"Entrar",
+    link_4: user_id?"/perfil":"/login",
     emphasis_t1: true
 }
 
-const paramsPost = {
+const ParamsPost = {
     photo: photo_post,
     tags: ["cuidados", "Cães & Gatos", "Guias"],
     title: "As almofadas são importantes: guia definitivo de cuidados com as patas",
     message: "São 3 da tarde e você já pega a coleira para passear com seu companheiro de caminhada. Tá aquele sol do cão e o asfalto parece que dá pra fritarum ovo. Se dá pra fazer uma fritura, imagina o que isso pode fazer com apatinha do seu pet? Essa é só uma das situações",
-    likes: "36",
     messages: "4",
     views: "88"
 }

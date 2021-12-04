@@ -9,8 +9,11 @@ import { ButtonWhite } from '../../components/button'
 import { Like } from '../../components/actions'
 import { RespUserComment, UserComment } from '../../components/usercomment'
 import { BottomPage } from '../../components/bottompage'
+import { useParams } from 'react-router'
 
 export default function SpecificPost({props}) {
+
+    const { post_id } = useParams() 
 
     return (
         <div className="body-specificPost">
@@ -80,7 +83,7 @@ export default function SpecificPost({props}) {
             </div>
             <div className="especificPostBottom">
                 <div>
-                    <Like likes={"52"}/>
+                    <Like user_id={sessionStorage.getItem('id')} post_id={post_id}/>
                 </div>
                 <div className="especificPostBottom__comment">
                     <div className="especificPostBottom__comment-label">
@@ -115,6 +118,8 @@ export default function SpecificPost({props}) {
     )
 }
 
+const user_id = sessionStorage.getItem('id')
+
 const paramsNavbar = {
     text_1: "Página Inicial",
     link_1: "/",
@@ -122,8 +127,8 @@ const paramsNavbar = {
     link_2: "/",
     text_3: "Fale Conosco",
     link_3: "/",
-    text_4: "Entrar",
-    link_4: "/login"
+    text_4: user_id?"Perfil":"Entrar",
+    link_4: user_id?"/perfil":"/login",
 }
 
 const paramsExploreTags = {
