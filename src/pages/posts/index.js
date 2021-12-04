@@ -1,17 +1,21 @@
-import { NavBar } from "../../components/navbar"
-import photo_profile from "../../assets/Cíntia Lorenzzo.jpg"
-import facebook from "../../assets/icons/Icon awesome-facebook-square.svg"
-import instagram from "../../assets/icons/Icon awesome-instagram.svg"
-import twitter from "../../assets/icons/Icon awesome-twitter-square.svg" 
-import photo_post from "../../assets/Esqueci minha senha.jpg"
+//SCSS
 import "./index.scss"
+//React
+import { useContext, useEffect, useState } from "react"
+//Components
 import { PreviewPost } from "../../components/previewpost"
 import { ButtonWhite } from "../../components/button"
 import { BottomPage } from "../../components/bottompage"
 import { PopularPublication } from "../../components/popularpublication"
-import { useContext, useEffect, useState } from "react"
 import UserContext from "../../components/useContext/userContext.js"
-import api from "../../api/api"
+import { NavBar } from "../../components/navbar"
+//Assets
+import photo_profile from "../../assets/Cíntia Lorenzzo.jpg"
+import facebook from "../../assets/icons/Icon awesome-facebook-square.svg"
+import instagram from "../../assets/icons/Icon awesome-instagram.svg"
+import twitter from "../../assets/icons/Icon awesome-twitter-square.svg" 
+//Api
+import api from "../../api/api" 
 
 export default function Posts() {
 
@@ -50,42 +54,42 @@ export default function Posts() {
     },[])
 
     return (
-        <div className="posts-body">
-            <NavBar props={paramsNavbar}/>
-            <div className="main">
-                <div className="main-left">
-                    <input className="main-left__input"/>
-                    <div className="main-left__description">
-                        <img className="description-photo" src={photo_profile} alt="foto-de-perfil"/><br/>
-                        <span className="description-span-1">SOBRE A AUTORA</span><br/>
-                        <span className="description-span-2">Cíntia Lorenzzo</span><br/>
-                        <span className="description-span-3">
+        <div className="posts">
+            <><NavBar props={paramsNavbar}/></>
+            <div className="posts__div">
+                <div className="posts__div-left">
+                    <input className="posts__div-left__input"/>
+                    <div className="posts__div-left__description">
+                        <img className="posts__div-left__description-photo" src={photo_profile} alt="foto-de-perfil"/><br/>
+                        <span className="posts__div-left__description-span1">SOBRE A AUTORA</span><br/>
+                        <span className="posts__div-left__description-span2">Cíntia Lorenzzo</span><br/>
+                        <span className="posts__div-left__description-span3">
                             Sou veterinária há 5 anos, apaixonada pelo mundo animal, 
                             principalmente os que estão sempre conosco no dia a dia.
                             Quando não estou no meu consultório ou com meus pets, 
                             estou aqui escrevendo conteúdo para vocês. Espero que você goste!
                         </span><br/>
-                        <img className="description-icon" src={facebook} alt="facebook"/>
-                        <img className="description-icon" src={instagram} alt="instagram"/>
-                        <img className="description-icon" src={twitter} alt="twitter"/>
+                        <img className="posts__div-left__description-icon" src={facebook} alt="facebook"/>
+                        <img className="posts__div-left__description-icon" src={instagram} alt="instagram"/>
+                        <img className="posts__div-left__description-icon" src={twitter} alt="twitter"/>
                     </div>
-                    <div className="main-left__popularPublication">               
+                    <div className="posts__div-left__popularPublication">               
                         <PopularPublication props={paramsPublication}/>
                         <PopularPublication props={paramsPublication_2}/>
                         <PopularPublication props={paramsPublication_2}/>
                     </div>
                     <ButtonWhite>Ver todas</ButtonWhite>
                 </div>
-                <div className="main-right">
-                    <div className="main-right__title">
-                        <span className="title-span-1">Miau!</span><br/>
-                        <span className="title-span-2">Seja bem-vinda(o) ao blog PetGatô! Confira nosso conteúdo mais recente:</span>
+                <div className="posts__div-right">
+                    <div className="posts__div-right__title">
+                        <span className="posts__div-right__title-span1">Miau!</span><br/>
+                        <span className="posts__div-right__title-span2">Seja bem-vinda(o) ao blog PetGatô! Confira nosso conteúdo mais recente:</span>
                     </div>
-                    <div className="main-right__posts">
+                    <div className="posts__div-right__posts">
                         {IdList.map((e) => {return (<PreviewPost user_id={sessionStorage.getItem('id')} post_id={e.id}/>)})}
                     </div>
-                    <div className="main-right__button">
-                        <ButtonWhite className="button-white">PUBLICAÇÕES ANTERIORES</ButtonWhite>
+                    <div className="posts__div-right__button">
+                        <ButtonWhite>PUBLICAÇÕES ANTERIORES</ButtonWhite>
                     </div>
                 </div>
             </div>

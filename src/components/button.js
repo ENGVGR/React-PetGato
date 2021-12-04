@@ -19,7 +19,7 @@ const ButtonPurple = styled.button`
 const ButtonWhite = styled.button`
     cursor: pointer;
     font-size: 1.5em;
-    width: 6em;
+    width: auto;
     height: 2em;
     margin-top: 1.1em;
     background-color: #ffffff;
