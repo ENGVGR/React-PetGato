@@ -41,9 +41,11 @@ const PreviewPost = ({user_id, post_id}) => {
                     <span className="main-text__span">{Content.substr(0, 400)}</span>
                 </div>
                 <div className="main-buttons">
-                    <div>
-                        <ButtonWhite className="main-buttons__white">Leia mais</ButtonWhite>
-                    </div>
+                    <>
+                        <Link className="link" to={{pathname: `/post/${post_id}`}}>
+                            <ButtonWhite className="main-buttons__white">Leia mais</ButtonWhite>
+                        </Link>
+                    </>
                     <div className="main-buttons__actions">
                         <Like user_id={user_id} post_id={post_id}/>
                     </div>
