@@ -29,6 +29,7 @@ export default function SpecificPost() {
     const Admin = sessionStorage.getItem('admin')
     const [Banner, setBanner] = useState()
     const [Comment, setComment] = useState('')
+    const [date, setdate] = useState('')
     const headers = {headers: {Authorization: sessionStorage.getItem('token')}}
     const [CommentList, setCommentList] = useState('')
 
@@ -56,6 +57,7 @@ export default function SpecificPost() {
                 setTitle(resp.data.title)
                 setContent(resp.data.content)  
                 setBanner(resp.data.banner_image)
+                setdate(resp.data.date)
                 if (First ) {
                     const Data = {views: Views + 1}
                     api.patch(`/posts/${post_id}`, Data)                   
@@ -103,7 +105,7 @@ export default function SpecificPost() {
                         <span className="specificPostLeft__title-text">{Title}</span>
                     </div>
                     <div className="specificPostLeft__subTitle">
-                        <span className="specificPostLeft__subTitle-text">Publicado em 08 de outubro de 2019 às 09h28</span>
+                        <span className="specificPostLeft__subTitle-text">{(new Date(date)).toLocaleDateString('pt-BR', DATE_OPTIONS)}</span>
                         <div className="specificPostLeft__subTitle-views">
                             <img className="specificPostLeft__subTitle-views__image" src={views} alt="views"/>
                             <span className="specificPostLeft__subTitle-views__number">{Views + 1}</span>
@@ -157,6 +159,8 @@ export default function SpecificPost() {
         </div>
     )
 }
+
+const DATE_OPTIONS = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }
 
 const paramsExploreTags = {
     first: true,
