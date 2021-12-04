@@ -36,6 +36,19 @@
     font-size: 1.5em;
     color: rgb(255, 255, 255);
     text-decoration: none;
-    font-weight: bold;
-    
+    font-weight: bold;  
+}
+
+.navbar-sair {
+    margin: auto;
+    margin-left: 0vh;
+    margin-right: 5vh;
+    font-size: 1.5em;
+    color: rgb(255, 255, 255);
+    background-color: #BA66A3;
+    border: none;
+    opacity: 0.8;
+    &:hover {
+        cursor: pointer;
+    }
 }

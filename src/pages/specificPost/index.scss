@@ -60,9 +60,16 @@
                 object-fit: cover;
             }
             &__content {
+                min-width: 100%;
+                margin-top: 3%;
                 &-text {
+                    min-width: 99%;
                     font-size: 1.2em;
                     opacity: 0.6;
+                    min-height: 110vh;
+                    resize: none;
+                    background-color: white;
+                    border: none;
                 }
             }
             &__line {

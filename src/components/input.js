@@ -16,6 +16,15 @@ const InputProfile = styled.input`
     min-width: 45vh;
 `;
 
+const InputCreatePost = styled.input`
+    border: 1px solid #C882B4;
+    height: 2.5em;
+    font-size: 1.1em;
+    text-align: center;
+    min-width: 99%;
+    margin-top: 1%;
+`;
+
 const Label = styled.label`
     font-size: 1.2em;
     width: 50%;
@@ -35,5 +44,13 @@ const LabelProfile = styled.label`
     margin-top: 1em;
 `;
 
-export {Input,InputProfile, Label, LabelProfile}
+const LabelCreatePost = styled.label`
+    font-size: 1.2em;
+    display: block;
+    color: #C882B4;
+    font-weight: 700;
+    margin-top: 1em;
+`;
+
+export {Input,InputProfile,InputCreatePost, Label, LabelProfile, LabelCreatePost}
 

@@ -9,8 +9,45 @@ import { PreviewPost } from "../../components/previewpost"
 import { ButtonWhite } from "../../components/button"
 import { BottomPage } from "../../components/bottompage"
 import { PopularPublication } from "../../components/popularpublication"
+import { useContext, useEffect, useState } from "react"
+import UserContext from "../../components/useContext/userContext.js"
+import api from "../../api/api"
 
 export default function Posts() {
+
+    const {user, setUser} = useContext(UserContext)
+    const Admin = sessionStorage.getItem('admin')
+    const [IdList, setIdList] = useState([])
+
+    if (!user || !Admin) {
+        setUser("")
+        sessionStorage.setItem('admin', "")
+    }
+
+    const paramsNavbar = {
+        text_1: "Página Inicial",
+        link_1: "/",
+        text_2: Admin!== "null"&Admin!==""?"Publicações":"Sobre Nós",
+        link_2: Admin!== "null"&Admin!==""?"/create-post":"/",
+        text_3: Admin!== "null"&Admin!==""?"Usuários":"Fale Conosco",
+        link_3: "/",
+        text_4: Admin!== "null"&Admin!==""?"Denúncias":user!==""?"Minha Conta":"Entrar",
+        link_4: user!==""?"/perfil":"/login",
+        text_5: user!==""?"Sair":"",
+        text_6: Admin!== "null"&Admin!==""?"Mensagens":"",
+        link_6: Admin!== "null"&Admin!==""?"/":"",
+        emphasis_t1: true
+    }
+
+    useEffect(() => {
+        
+        async function GetViews() {
+            api.get(`/posts`)
+            .then((resp) => {
+                setIdList(resp.data)
+            })
+        } GetViews()        
+    },[])
 
     return (
         <div className="posts-body">
@@ -45,11 +82,7 @@ export default function Posts() {
                         <span className="title-span-2">Seja bem-vinda(o) ao blog PetGatô! Confira nosso conteúdo mais recente:</span>
                     </div>
                     <div className="main-right__posts">
-                        <PreviewPost props={ParamsPost} user_id={sessionStorage.getItem('id')} post_id={3}/>
-                        <PreviewPost props={ParamsPost} user_id={sessionStorage.getItem('id')} post_id={3}/>
-                        <PreviewPost props={ParamsPost} user_id={sessionStorage.getItem('id')} post_id={3}/>
-                        <PreviewPost props={ParamsPost} user_id={sessionStorage.getItem('id')} post_id={3}/>
-                        <PreviewPost props={ParamsPost} user_id={sessionStorage.getItem('id')} post_id={3}/>
+                        {IdList.map((e) => {return (<PreviewPost user_id={sessionStorage.getItem('id')} post_id={e.id}/>)})}
                     </div>
                     <div className="main-right__button">
                         <ButtonWhite className="button-white">PUBLICAÇÕES ANTERIORES</ButtonWhite>
@@ -59,20 +92,6 @@ export default function Posts() {
             <BottomPage/>
         </div>
     )
-}
-
-const user_id = sessionStorage.getItem('id')
-
-const paramsNavbar = {
-    text_1: "Página Inicial",
-    link_1: "/",
-    text_2: "Sobre Nós",
-    link_2: "/",
-    text_3: "Fale Conosco",
-    link_3: "/",
-    text_4: user_id?"Perfil":"Entrar",
-    link_4: user_id?"/perfil":"/login",
-    emphasis_t1: true
 }
 
 const ParamsPost = {
