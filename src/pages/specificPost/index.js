@@ -1,35 +1,36 @@
+//SCSS
+import './index.scss'
+//React
+import { useParams } from 'react-router'
+import { useContext, useEffect, useState } from 'react'
+//Components
 import { BackPage } from '../../components/backpage'
 import { NavBar } from '../../components/navbar'
-import views from '../../assets/icons/Icon awesome-eye.svg'
-import banner from '../../assets/Esqueci minha senha.jpg'
-import './index.scss'
 import { ExploreTags } from '../../components/exploretags'
 import { PopularPublication } from '../../components/popularpublication'
 import { ButtonWhite } from '../../components/button'
 import { Like } from '../../components/actions'
-import { RespUserComment, UserComment } from '../../components/usercomment'
+import { UserComment } from '../../components/usercomment'
 import { BottomPage } from '../../components/bottompage'
-import { useParams } from 'react-router'
-import { useContext, useEffect, useState } from 'react'
-import api from '../../api/api'
 import UserContext from '../../components/useContext/userContext.js'
+//Assets
+import views from '../../assets/icons/Icon awesome-eye.svg'
+//Api
+import api from '../../api/api'
 
-export default function SpecificPost({props}) {
+export default function SpecificPost() {
 
     const { post_id } = useParams() 
     const [Views, setViews] = useState(0)
     const [Title, setTitle] = useState('')
     const [Content, setContent] = useState('')
-    const [First, setFirst] = useState(true)
+    const [First] = useState(true)
     const {user} = useContext(UserContext)
     const Admin = sessionStorage.getItem('admin')
     const [Banner, setBanner] = useState()
     const [Comment, setComment] = useState('')
     const headers = {headers: {Authorization: sessionStorage.getItem('token')}}
     const [CommentList, setCommentList] = useState('')
-    const [name, setName] = useState('')
-    const [Avatar, setAvatar] = useState('')
-    const [Mudou, setMudou] = useState(false)
 
     const paramsNavbar = {
         text_1: "Página Inicial",
@@ -83,11 +84,11 @@ export default function SpecificPost({props}) {
         const Data = {
             description: Comment
         }
+
         api.post(`/comments/${user}/${post_id}`, Data, headers)
         .then(() => {
             setComment('')
-        })
-        
+        })       
     }
 
     return (
@@ -124,7 +125,7 @@ export default function SpecificPost({props}) {
                     <div>
                         <PopularPublication props={paramsPublication}/>
                         <PopularPublication props={paramsPublication2}/>
-                        <PopularPublication props={paramsPublication3}/>
+                        <PopularPublication props={paramsPublication2}/>
                     </div>
                     <div className="specificPostRight__button">
                         <ButtonWhite>Ver todas</ButtonWhite>
@@ -140,7 +141,7 @@ export default function SpecificPost({props}) {
                         <label htmlFor="comment" className="especificPostBottom__comment-label__text">Gostou? Deixe um comentário abaixo:</label>
                     </div>
                     <form onSubmit={handleSubmit}>
-                        <textarea id="comment" className="especificPostBottom__comment-text" rows="5" cols="86" placeholder="Solta o verbo, meu consagrado..." value={Comment} onChange={(e) => {setComment(e.target.value)}}/>
+                        <textarea id="comment" className="especificPostBottom__comment-text" rows="5"  placeholder="Solta o verbo, meu consagrado..." value={Comment} onChange={(e) => {setComment(e.target.value)}}/>
                         <div className="especificPostBottom__comment-button">
                             <ButtonWhite>Enviar</ButtonWhite>
                         </div>
@@ -187,18 +188,4 @@ const paramsPublication2 = {
     title: "As almofadinhas são importantes: guia definitivo de cuidados com as patas",
     text: "São 3 da tarde e você já pega a coleira para passear com seu companheiro de caminhada. Tá aquele sol do cão e o...",
     date: "Publicado em 08 de outubro de 2019"
-}
-
-const paramsPublication3 = {
-    first: false,
-    title: "As almofadinhas são importantes: guia definitivo de cuidados com as patas",
-    text: "São 3 da tarde e você já pega a coleira para passear com seu companheiro de caminhada. Tá aquele sol do cão e o...",
-    date: "Publicado em 08 de outubro de 2019"
-}
-
-const paramsUserComment = {
-    avatar: banner,
-    name: "Pessoa Teste 1",
-    date: "09 de outubro de 2021 às 10h35",
-    text: "Etiam enim velit, ultrices non dolor quis, volutpat iaculis orci. Class aptent taciti sociosqu ad litora torquent!"
 }
