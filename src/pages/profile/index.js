@@ -6,9 +6,10 @@ import camera from "../../assets/icons/Icon awesome-camera.svg"
 import {InputProfile, LabelProfile} from "../../components/input"
 import { ButtonWhite } from "../../components/button"
 import { BottomPage } from "../../components/bottompage/index"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import api from '../../api/api';
 import avatarNeutro from '../../assets/avatar_neutro.png'
+import UserContext from "../../components/useContext/userContext"
 
 export default function Profile() {
 
@@ -23,11 +24,27 @@ export default function Profile() {
     const [ErrorLogin, setErrorLogin] = useState(false)
     const [ErrorNewPassword, setErrorNewPassword] = useState(false)
     const [Confirmation, setConfirmation] = useState(false)
+    const {user} = useContext(UserContext)
+    const Admin = sessionStorage.getItem('admin')
+    const paramsNavbar = {
+        text_1: "Página Inicial",
+        link_1: "/",
+        text_2: Admin!== "null"&Admin!==""?"Publicações":"Sobre Nós",
+        link_2: Admin!== "null"&Admin!==""?"/create-post":"/",
+        text_3: Admin!== "null"&Admin!==""?"Usuários":"Fale Conosco",
+        link_3: "/",
+        text_4: Admin!== "null"&Admin!==""?"Denúncias":user!==""?"Minha Conta":"Entrar",
+        link_4: user!==""?"/perfil":"/login",
+        text_5: user!==""?"Sair":"",
+        text_6: Admin!== "null"&Admin!==""?"Mensagens":"",
+        link_6: Admin!== "null"&Admin!==""?"/":"",
+        emphasis_t4: true
+    }
 
     if (First) {
         setFirst(false)
         async function Get() {
-            api.get(`users/${id}`, headers)
+            api.get(`users/${user}`, headers)
             .then((resp) => {
                 console.log(resp)
                 const Data = resp.data
@@ -70,7 +87,7 @@ export default function Profile() {
                         Data_2.append('password_confirmation', NewPasswordConfirm)
                         Data_2.append('avatar', SendAvatar, SendAvatar.name)
 
-                        api.patch(`users/${id}`, Data_2, headers)
+                        api.patch(`users/${user}`, Data_2, headers)
                         .then(() => {
                             setConfirmation(true)
                             setErrorLogin(false)
@@ -98,7 +115,7 @@ export default function Profile() {
                         Data_2.append("password", Password)
                         Data_2.append('avatar', SendAvatar, SendAvatar.name)
 
-                        api.patch(`users/${id}`, Data_2, headers)
+                        api.patch(`users/${user}`, Data_2, headers)
                         .then(() => {
                             setConfirmation(true)
                             setErrorLogin(false)
@@ -161,20 +178,6 @@ export default function Profile() {
     )
 }
 
-const id = sessionStorage.getItem('id')
-
 const headers = {
     headers: {Authorization: sessionStorage.getItem('token')}
-}
-
-const paramsNavbar = {
-    text_1: "Página Inicial",
-    link_1: "/",
-    text_2: "Sobre Nós",
-    link_2: "/",
-    text_3: "Fale Conosco",
-    link_3: "/",
-    text_4: "Minha conta",
-    link_4: "/perfil",
-    emphasis_t4: true
 }
