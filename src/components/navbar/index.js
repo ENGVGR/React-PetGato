@@ -7,7 +7,7 @@ import { useNavigate } from "react-router";
 
 const NavBar = ({props}) => {
 
-    const {user, setUser} = useContext(UserContext)
+    const { setUser } = useContext(UserContext)
     const navigate = useNavigate();
 
     function Logout() {
