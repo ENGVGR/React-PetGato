@@ -13,7 +13,7 @@ const InputProfile = styled.input`
     height: 1.7em;
     font-size: 1.1em;
     text-align: center;
-    min-width: 45vh;
+    width: 87%;
 `;
 
 const InputCreatePost = styled.input`

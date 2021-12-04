@@ -1,90 +1,86 @@
 .profile {
-    min-width: 100vh;
-    min-height: 99.7vh;
-}
-
-.profile-div {
-    display: flex;
-}
-
-.profile-photo-div {
-    width: 40%;
-    text-align: center;
-    padding-top: 6vh;
-    height: 72.5vh;
-}
-
-.profile-photo {
-    width: 35vh;
-    height: 35vh;
-    border-radius: 50%;
-    object-fit: cover;
-    
-}
-
-.profile-photo-link {
-    display: block;
-    text-decoration: none;
-    font-size: 1.4em;
-    color: #BA66A3;
-    font-weight: bold;
-    margin-top: 0.5em;
-}
-
-.profile-photo-icon {
-    width: 4vh;
-    margin-right: 0.3em;
-}
-
-.profile-form-div {
-    width: 60%;
-    height: 72.5vh;
-    padding-top: 6vh;
-}
-
-.profile-title-div {
-    display: block;
-    width: 100%;
-}
-
-.profile-title {
-    font-size: 1.6em;
-    opacity: 0.8;
-    display: block;
-}
-
-.profile-title-2 {
-    color: #BA66A3;
-    font-weight: 1000;
-    font-size: 2em;
-}
-
-.profile-form {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.profile-input-div {
-    height: 55vh;
-    width: 40%;
-}
-
-.profile-span-error {
-    color: red;
-    font-size: 0.8em;
-    display: block;
-}
-
-.profile-input-div-2 {
-    height: 55vh;
-    width: 50%;
-    .email {
-        background-color: #dbcfcf
+    &__div {
+        display: flex;
+        &-photo {
+            width: 40%;
+            text-align: center;
+            padding-top: 6vh;
+            height: 72.5vh;
+            &__img {
+                width: 35vh;
+                height: 35vh;
+                border-radius: 50%;
+                object-fit: cover; 
+            }
+            &__link {
+                display: block;
+                text-decoration: none;
+                font-size: 1.4em;
+                color: #BA66A3;
+                font-weight: bold;
+                margin-top: 0.5em;
+            }
+            &__icon {
+                width: 7%;
+                margin-right: 0.3em;
+            }
+        }
+        &-form {
+            width: 60%;
+            padding-top: 2%;
+            &__title {
+                display: block;
+                &-span1 {
+                    font-size: 1.6em;
+                    opacity: 0.8;
+                    display: block;
+                }
+                &-span2 {
+                    color: #BA66A3;
+                    font-weight: 1000;
+                    font-size: 2em;
+                }
+            }
+            &__form {
+                display: flex;
+                flex-wrap: wrap;
+                &-input {
+                    width: 40%;
+                    &__span {
+                        font-size: 0.8em;
+                        opacity: 0.7;
+                    }
+                    &__error {
+                        color: red;
+                        font-size: 0.8em;
+                        display: block;
+                    }
+                }
+            }
+            &__form2 {
+                width: 50%;
+                &-email {
+                    background-color: #dbcfcf
+                }
+                &-error {
+                    color: red;
+                    font-size: 0.8em;
+                    display: block;
+                }
+            }
+        }
     }
 }
 
-.profile-input-span {
-    font-size: 0.8em;
-    opacity: 0.7;
-
+@media screen and (max-width: 568px) {
+    .profile__div-photo__img {
+        width: 20vh;
+        height: 20vh;
+    }
+    .profile__div-photo__link {
+        font-size: 1em;
+    }
+    .profile__div-photo__icon {
+        width: 8%;
+    }
 }
