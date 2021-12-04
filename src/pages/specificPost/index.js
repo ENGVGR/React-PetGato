@@ -83,6 +83,7 @@ export default function SpecificPost() {
     function handleSubmit(e) {
         e.preventDefault()
 
+        if (user) {
         const Data = {
             description: Comment
         }
@@ -91,6 +92,7 @@ export default function SpecificPost() {
         .then(() => {
             setComment('')
         })       
+    }
     }
 
     return (
@@ -143,7 +145,7 @@ export default function SpecificPost() {
                         <label htmlFor="comment" className="especificPostBottom__comment-label__text">Gostou? Deixe um comentário abaixo:</label>
                     </div>
                     <form onSubmit={handleSubmit}>
-                        <textarea id="comment" className="especificPostBottom__comment-text" rows="5"  placeholder="Solta o verbo, meu consagrado..." value={Comment} onChange={(e) => {setComment(e.target.value)}}/>
+                        {user?<textarea id="comment" className="especificPostBottom__comment-text" rows="5"  placeholder="Solta o verbo, meu consagrado..." value={Comment} onChange={(e) => {setComment(e.target.value)}}/>:<textarea id="comment" className="especificPostBottom__comment-text" rows="5"  placeholder="Apenas usuários cadastrados podem comentar!" value={Comment} onChange={(e) => {setComment(e.target.value)}} disabled/>}                       
                         <div className="especificPostBottom__comment-button">
                             <ButtonWhite>Enviar</ButtonWhite>
                         </div>
