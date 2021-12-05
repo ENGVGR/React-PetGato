@@ -92,7 +92,7 @@
     }
     .especificPostBottom {
         @include size;
-        &__comment {
+        &__comment {           
             &-label {
                 margin-bottom: 2%;
                 margin-top: 2%;
@@ -106,6 +106,7 @@
                 resize: none;
                 border-color: #BA66A3;
                 font-size: 1.3em;
+                min-width: 100%;
             }
             &-button {
                 text-align: right;

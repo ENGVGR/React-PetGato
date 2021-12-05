@@ -1,23 +1,29 @@
-.reset-password-div {
+.resetPassword {
     width: auto;
     min-height:100vh;
     display: flex;
+    &__image {
+        width:50%;
+        object-fit: cover;
+    }
+    &__form {
+        width: 50%;
+        text-align: center;
+        background-color: #FBE9F6;
+        padding-top: 8em;
+        &-error {
+            color: red;
+            font-size: 0.8em;
+            display: block;
+        }
+    }
 }
 
-.reset-password-image {
-    width:50%;
-    object-fit: cover;
-}
-
-.reset-password-div-form {
-    width: 50%;
-    text-align: center;
-    background-color: #FBE9F6;
-    padding-top: 8em;
-}
-
-.reset-password-span-error {
-    color: red;
-    font-size: 0.8em;
-    display: block;
+@media screen and (max-width: 500px) {
+    .resetPassword__image {
+        display: none;
+    }
+    .resetPassword__form {
+        width: 100%;
+    }
 }

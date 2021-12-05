@@ -7,7 +7,6 @@ import "./index.scss"
 
 const PreviewPost = ({user_id, post_id}) => {
 
-    const [ViewsCount, setViewsCount] = useState(0)
     const [Title, setTitle] = useState('')
     const [Content, setContent] = useState('')
     const [Banner, setBanner] = useState()
@@ -17,7 +16,6 @@ const PreviewPost = ({user_id, post_id}) => {
         async function GetViews() {
             api.get(`/posts/${post_id}`)
             .then((resp) => {
-                setViewsCount(resp.data.views)
                 setTitle(resp.data.title)
                 setContent(resp.data.content)  
                 setBanner(resp.data.banner_image)
@@ -43,9 +41,11 @@ const PreviewPost = ({user_id, post_id}) => {
                     <span className="main-text__span">{Content.substr(0, 400)}</span>
                 </div>
                 <div className="main-buttons">
-                    <div>
-                        <ButtonWhite className="main-buttons__white">Leia mais</ButtonWhite>
-                    </div>
+                    <>
+                        <Link className="link" to={{pathname: `/post/${post_id}`}}>
+                            <ButtonWhite className="main-buttons__white">Leia mais</ButtonWhite>
+                        </Link>
+                    </>
                     <div className="main-buttons__actions">
                         <Like user_id={user_id} post_id={post_id}/>
                     </div>

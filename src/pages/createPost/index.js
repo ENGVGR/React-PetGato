@@ -1,6 +1,9 @@
+//SCSS
+import './index.scss'
+//React
 import { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
-import api from '../../api/api'
+//Components
 import { Like, Message, Views } from '../../components/actions'
 import { BottomPage } from '../../components/bottompage'
 import { ButtonWhite } from '../../components/button'
@@ -9,10 +12,8 @@ import { InputCreatePost, LabelCreatePost } from '../../components/input'
 import { NavBar } from '../../components/navbar'
 import ContentContext from '../../components/useContext/contentContext'
 import UserContext from '../../components/useContext/userContext.js'
-import './index.scss'
-
-var CheckedList = {base: false}
-var TagsList = []
+//Api
+import api from '../../api/api'
 
 export function CreatePost() {
 
@@ -62,13 +63,9 @@ export function CreatePost() {
             Data.append('views', 0)
             api.post(`/posts`, Data, headers)
             .then((resp) => {
-                console.log(resp)
                 setConfirmation(true)
                 setTitle('')
                 setContent('')
-            })
-            .catch((err) => {
-                console.log(err)
             })
         } 
         if (Banner){
@@ -128,9 +125,9 @@ export function CreatePost() {
                     <div className="createPost__form-tags">                        
                         {Tags.map((e) => {return (<div className="createPost__form-tags__tag"><input id={e.id} type="checkbox" onClick={(event)=>{AddChecked(event.target.checked,e.name)}}/><label htmlFor={e.id} className="createPost__form-tags__tag-label">{e.name}</label></div>)})}
                     </div>
-                    <div className="createPost__form-tagsButton">
-                        <ButtonWhite className="createPost__form-tagsButton__button" type="button">GERENCIAR TAGS</ButtonWhite>
-                    </div>
+                    <>
+                        <ButtonWhite type="button">GERENCIAR TAGS</ButtonWhite>
+                    </>
                     <div className="createPost__form-buttons">
                         <div className="createPost__form-buttons__send">                        
                             <ButtonWhite className="createPost__form-buttons__send-button">PUBLICAR</ButtonWhite>  
@@ -148,6 +145,9 @@ export function CreatePost() {
         </div>
     )
 }
+
+var CheckedList = {base: false}
+var TagsList = []
 
 const Tags = [
     {name: "Adestramento", id: "tag-1"},

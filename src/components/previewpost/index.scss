@@ -1,29 +1,24 @@
 .post-body {
-    min-height: 32vh;
-    max-height: 32vh;
-    margin-bottom: 7vh;
+    width: auto;
+    margin-bottom: 4%;
     display: flex;
     .body-img {
-        min-width: 38vh;
-        max-width: 38vh;
+        min-width: 35vh;
+        max-width: 35vh;
         min-height: 35vh;
         max-height: 35vh;
     }
     .main {
-        max-width: 94vh;
-        max-height: 35vh;
-        min-height: 35vh;
+        max-width: 74%;
         display: block;
         .main-tags {
-            margin-top: 2vh;
-            margin-left: 2vh;
-            max-height: 4vh;
-            min-width: 100vh;
+            margin-top: 2%;
+            margin-left: 2%;
             .main-tags__span-1 {
                 font-size: 0.8em;
             }
             .main-tags__span-2 {
-                margin-left: 2vh;
+                margin-left: 2%;
                 color: #BA66A3;
                 background-color: #FBE9F6;
                 padding: 0.3vh;
@@ -32,8 +27,8 @@
             }
         }
         .main-title {
-            margin-top: 2vh;
-            margin-left: 2vh;
+            margin-top: 2%;
+            margin-left: 2%;
             .link {
                 text-decoration: none;
                 .main-title__span {
@@ -44,8 +39,8 @@
             }
         }
         .main-text {
-            margin-top: 2vh;
-            margin-left: 2vh;
+            margin-top: 2%;
+            margin-left: 2%;
             .main-text__span {
                 font-size: 0.8em;
                 opacity: 0.9;
@@ -54,16 +49,22 @@
         .main-buttons {
             display: flex;
             align-items:center;
-            margin-left: 2vh;
+            margin-left: 2%;
             .main-buttons__white {
-                height: 5vh;
+                height: auto;
                 font-size: 1.2em;
             }
             .main-buttons__actions {
-                margin-left: 5vh;
-                margin-top: 1.1em;
+                margin-left: 5%;
+                margin-top: 5%;
                 
             }
             
         }
 }   }
+
+@media screen and (max-width: 550px) {
+    .post-body {
+        display: block;
+    }
+} 

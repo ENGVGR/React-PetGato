@@ -1,5 +1,5 @@
-import {BrowserRouter as Router, Route} from "react-router-dom";
-import { Routes } from "react-router";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Routes, Navigate } from "react-router";
 import './index.css';
 import Register from './pages/register/index';
 import ForgotPassword from './pages/forgotPassword/index';
@@ -17,6 +17,7 @@ function App() {
 
   const [user, setUser] = useState(sessionStorage.getItem('id'))
   const [Content, setContent] = useState('')
+
   return (
 
     <UserContext.Provider value={{user, setUser}}>
@@ -24,7 +25,7 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Posts/>}/>
-            <Route path="/login" element={<Login/>}/>
+            <Route path="/login" element={user?<Navigate to="/"/>:<Login/>}/>
             <Route path="/registro" element={<Register/>}/>
             <Route path="/recuperacao-de-senha" element={<ForgotPassword/>}/>
             <Route path="/recuperar-senha/:id/:token" element={<ResetPassword/>}/>

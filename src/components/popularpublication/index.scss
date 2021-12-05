@@ -33,3 +33,18 @@
         }
     }
 }
+
+@media screen and (max-width: 688px) { 
+    .main-title {
+        font-size: 0.7em;
+    }
+    .main-title-2 {
+        font-size: 0.8em;
+    }
+    .main-text {
+        font-size: 0.8em;
+    }
+    .main-date {
+        font-size: 0.8em;
+    }
+}
